@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Photo } from './components/photo';
+import { Card } from './components/card';
 
 function App(props) {
   return (
@@ -11,7 +11,7 @@ function App(props) {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Photo />
+        <Card/>
         <a
           className="App-link"
           href="https://reactjs.org"

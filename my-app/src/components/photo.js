@@ -42,16 +42,26 @@ export class Photo extends React.Component {
           return <div>Loading...;)</div>;
         } else {
           return (
-                <li key={items.title}>
+                <div>
+                    <a href = {items.url}>
+                {/* <li key={items.title}> */}
                   <img src={items.url} alt={items.title}></img>
-                  {items.title} 
-                </li>
+                  <span className='span-title'>{items.title}</span> 
+                {/* </li> */}
+                </a>
+                </div>
           );
         }
       }
 
   }
+//         <div>
+//             <a href = {this.props.url}>
+//                 <img className = 'fotito' src ={this.props.url}></img>
+//                 <span className='span-title'>{this.props.title}</span>
+//             </a>
 
+//         </div>
 
 
 
