@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Card } from './components/card';
+import { Card } from './components/Card/card';
+import { Form } from './components/form';
 
 function App(props) {
   return (
@@ -9,18 +10,21 @@ function App(props) {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Card/>
+         
+  { /*Edit <code>src/App.js</code> and save to reload.*/}
+        
         <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          Learn React
+          >
+          <h1>Real State Test</h1>
         </a>
+        </p>
       </header>
+      <Form/>
+      <Card/>
     </div>
   );
 }

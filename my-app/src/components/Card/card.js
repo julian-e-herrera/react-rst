@@ -1,5 +1,6 @@
 import React from 'react';
-import { Photo } from './photo';
+import { Photo } from '../photo';
+import './style.scss';
 
 
 export class Card extends React.Component {
@@ -41,12 +42,16 @@ export class Card extends React.Component {
             return <div>Loading...;)</div>;
           } else {
             return (
-                <ul>
+            <div className ='box'>
+              <div className = 'card'>
                   <Photo />
-                  <li>{items.name}</li>
-                  <li>{items.mail}</li>
-                  <li>{items.body}</li>
-                </ul>
+                  <ul className = 'description'>
+                    <li>{items.name}</li>
+                    <li>{items.email}</li>
+                    <li>{items.body}</li>
+                  </ul>
+                </div>
+              </div>
             );
           }
         }
