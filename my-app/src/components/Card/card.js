@@ -42,7 +42,7 @@ export class Card extends React.Component {
             return <div>Loading...;)</div>;
           } else {
             return (
-            <div className ='box'>
+            
               <div className = 'card'>
                   <Photo />
                   <ul className = 'description'>
@@ -51,7 +51,7 @@ export class Card extends React.Component {
                     <li>{items.body}</li>
                   </ul>
                 </div>
-              </div>
+            
             );
           }
         }

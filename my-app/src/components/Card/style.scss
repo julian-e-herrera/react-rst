@@ -15,6 +15,9 @@
     /*border: deeppink solid 5px;*/
     display: flex;
     width: 100%;
+
+    min-width: min-content;
+    max-width: 30%;
     height: 20%x;
     margin: 0.5%;
   }
@@ -27,20 +30,21 @@
     display: flex;
     float: left;
     
-    width: 70%;
+    width: 100%;
     min-width: 100px;
   
   }
   
   
   ul[class^='description'] {
-  
     width: 100%;
-    
+    min-width: 135px;
     list-style: none;
     shape-image-threshold: 0.5;
     shape-margin: 20px;
-    float: left;
+    text-align: left;
+    padding-left: initial;
+    shape-outside: content-box;
   }
 
 
@@ -60,6 +64,7 @@
         flex-wrap: wrap;
         height: 20%x;
         margin: 10px;
+        max-width: 100%;
     }
 
     .description {
