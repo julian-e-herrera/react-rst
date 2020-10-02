@@ -31,7 +31,7 @@ export class Popup extends React.Component{
             </div>)
         }return (
              <div >
-                    <button id="btn-abrir-popup" class="btn-abrir-popup"  onClick={this.abrirPopup}>Admin</button>
+                    <button id="btn-abrir-popup" className="btn-abrir-popup"  onClick={this.abrirPopup}>Admin</button>
             </div>
       )
     }
