@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  flex: 1;
 }
 
 .App-logo {
@@ -14,18 +15,23 @@
 }
 
 .App-header {
-  background-image: url('./img/home.jpeg');
-  min-height: 50vh;
+  background-image: url('./img/build.jpg');
+  background-size: cover; 
+  background-position: right bottom; 
+  min-height: 30vh;
+  max-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family:  Avenir;
+  font-weight: normal;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #F8F8F8;
 }
 
 @keyframes App-logo-spin {
@@ -46,6 +52,7 @@
   position: relative;
   margin: auto;
   margin-top: 5%;
+  
 
 }
 
@@ -59,7 +66,7 @@
   margin: 0 auto;
   }
   .overlay {
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.4);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -74,7 +81,7 @@
   .overlay.active {
     visibility: visible;
   }
-  .popup {
+  .popup.popup {
     background: #F8F8F8;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
     border-radius: 3px;
@@ -86,10 +93,77 @@
     transition: .3s ease all;
     transform: scale(0.7);
     /* opacity: 0; */
+    
     border-radius: 8px;
-
+    color: black;
     position: "absolute";
     top: 50%;
     left: 50%;
     transform: 'translate(-50%, -50%)'
   }
+
+   .popup.card{
+    transform: scale(1.5);
+    background: #F8F8F8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    text-align: center;
+    width: 600px;
+    transition: .3s ease all;
+    transform: scale(1.5);
+    /* opacity: 0; */
+    border-radius: 8px;
+    position: "absolute";
+    top: 50%;
+    left: 50%;
+   
+  } 
+  .popup.card.fotito{
+    min-width: 100%;
+  }
+
+  button[class^='btn-'] {
+    text-align: center;
+    background-color: rgb(192, 83, 92);
+    opacity: .5;
+    color: white;
+    border-color: transparent;
+    width: 10em;
+    height: 2.3em;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 1.88rem;
+}
+
+button[class^='btn-']:hover {
+    opacity: 1;
+}
+
+select,
+input {
+    /* display: flex; */
+    justify-content: center;
+    align-items: flex-start;
+    /*height: 150%;*/
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    /*font-size: 1.8em;*/
+    margin-left: auto;
+    text-decoration-thickness: initial;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.main-footer{
+  color: #F8F8F8;
+  background-color: black;
+  opacity: 0.5;
+  max-height: 20vh;  
+  
+}

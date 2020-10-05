@@ -4,7 +4,7 @@ import './App.css';
 import { Card } from './components/Card/card';
 import { Form } from './components/form';
 import { Footer } from './components/footer';
-//import { Popup } from './components/popup';
+//import { CardList } from './components/cardList';
 
 function App(props) {
   return (
@@ -27,6 +27,8 @@ function App(props) {
         <Card/>
         <Card/>
         <Card/>
+        
+        
       </div>
       <Footer/>
     </div>

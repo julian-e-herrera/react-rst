@@ -1,6 +1,9 @@
 import React from 'react';
+
 export class Form extends React.Component {
 //deberia agregar comportamiento para q realice las busquedas
+
+state = { name:'Search' };
 	render() {
   	return (
         <div className = "box-search">

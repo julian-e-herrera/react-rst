@@ -9,32 +9,26 @@
     word-wrap: break-word;
   }
   
+
+   ///*
   .card {
-    /* display: flex; */
-  
-    /*border: deeppink solid 5px;*/
     display: flex;
     width: 100%;
-
     min-width: min-content;
     max-width: 30%;
     height: 20%x;
     margin: 0.5%;
   }
   
-  .card:hover {
-    transform: scale(1.5)
-  }
-  
   .fotito {
     display: flex;
     float: left;
-    
     width: 100%;
     min-width: 100px;
-  
   }
-  
+  .fotito:hover{
+    transform: scale(1.5)
+  }
   
   ul[class^='description'] {
     width: 100%;
@@ -45,6 +39,12 @@
     text-align: left;
     padding-left: initial;
     shape-outside: content-box;
+  }
+  form .card{
+    flex-direction: column;
+    max-width: 100%;
+    padding: 10px;
+
   }
 
 
