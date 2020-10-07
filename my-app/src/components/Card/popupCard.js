@@ -8,7 +8,7 @@ export class PopupCard extends React.Component{
     }
   
  abrirPopup=()=>{
-      this.setState({abierto: !this.state.abierto});
+      this.setState({abierto: !this.state.abierto});//este deberia mostrarse..
     }
 
     render(){

@@ -8,7 +8,7 @@ export class Card extends React.Component {
     
     
     constructor(props) {
-        super(props);
+       super(props)
         this.state = {
           error: null,
           isLoaded: false,
@@ -52,11 +52,19 @@ export class Card extends React.Component {
                     <li>{items.body}</li>
                   </ul>
                 </div>
-            
+            //  <div>
+            //   <Photo />
+            // <div class="container-text">
+            // <h1>Lorem ipsum dolor sit amet, consectetur.</h1>
+            // <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam esse illum exercitationem perferendis accusamus, possimus sed molestiae accusantium necessitatibus neque sit aspernatur</p>
+            // <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus facere, sequi. Beatae recusandae, officiis sapiente amet quod vero est vel.</p>
+            // </div>
+            // </div>
             );
           }
         }
-}
+        
+      }
 
 
 

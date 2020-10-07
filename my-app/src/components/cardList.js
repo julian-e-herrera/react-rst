@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Card } from '../components/Card/card';
-
+import { Card } from '../components/Card/box';
+import { Photo } from './photo';
 export const CardList = (props) => (
-	<div>
-  	{props.items.map(item => <Card key={item.id} {...item}/>)}
+	<div className ='box'>
+  	{props.items.map(item => <Card key={item.id} {...item} />)}
 	</div>
 );

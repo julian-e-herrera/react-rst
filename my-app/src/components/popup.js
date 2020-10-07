@@ -16,7 +16,7 @@ export class Popup extends React.Component{
         if(open){
             className += ' active';
             return(<div className={className} id="overlay">
-                <div class="popup" id="popup">
+                <div className="popup" id="popup">
                 <form>
                     <h3>Log-in</h3>
                     <h4>Please confirm your access.</h4>
@@ -30,9 +30,7 @@ export class Popup extends React.Component{
                 </div>
             </div>)
         }return (
-             <div >
-                    <button id="btn-abrir-popup" className="btn-abrir-popup admin"  onClick={this.abrirPopup}>Admin</button>
-            </div>
+                <button id="btn-abrir-popup" className="btn-abrir-popup admin"  onClick={this.abrirPopup}>Admin</button>
       )
     }
 }
