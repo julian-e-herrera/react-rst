@@ -20,12 +20,12 @@ export class Popup extends React.Component{
                 <form>
                     <h3>Log-in</h3>
                     <h4>Please confirm your access.</h4>
-                    <label HTMLfor="usuario">Usuario</label>
+                    <label HTMLfor="usuario">User</label>
                     <input type="text" id="usuario"/> 
-                    <label for="password">Contraseña</label>
+                    <label for="password">Password</label>
                     <input type="text" id="password"/> 
-                    <button className="btn-" >Iniciar Sesión</button>
-                    <button className="btn-" onClick={this.abrirPopup}>Cerrar</button>
+                    <button className="btn-" >Log In</button>
+                    <button className="btn-" onClick={this.abrirPopup}>Close</button>
                 </form>
                 </div>
             </div>)

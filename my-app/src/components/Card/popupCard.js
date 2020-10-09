@@ -60,7 +60,7 @@ export class PopupCard extends React.Component{
                            <li>{carta.user.bio}</li>
                            <li>{carta.likes}</li>
                       </div>
-                    <button className="btn-" onClick={this.abrirPopup}>Cerrar</button>
+                    <button className="btn-" onClick={this.abrirPopup}>Close</button>
                       </div>
                     </div> 
                     </div> 
