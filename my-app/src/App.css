@@ -133,6 +133,10 @@
     position: "absolute";
     top: 50%;
     left: 50%;
+
+
+    max-height: 544px;
+    overflow: auto;
    
   } 
   .popup.card.fotito{
@@ -141,7 +145,8 @@
 
   button[class^='btn-'] {
     text-align: center;
-    background-color: rgb(192, 83, 92);
+    background-color: rgba(103,58,183,1);
+     /* rgb(192, 83, 92); */
     opacity: .5;
     color: white;
     border-color: transparent;
@@ -193,11 +198,20 @@ a{
 
 /* 
 //////boxstyle ///////////////////////////////////////////*/
-.img:hover{
+
+.img{
+  width: 40%
+};
+
+.title:hover {
+  transform:scale(1.5);
+}
+
+/*.img:hover{
   transform:scale(1.5);
   /* width: 400px;
-  height: 400px; */
-}
+  height: 400px; 
+}*/
 
 button{
   background-color: rgb(192, 83, 92);

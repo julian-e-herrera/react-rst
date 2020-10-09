@@ -2,6 +2,7 @@ import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import { Card } from './components/Card/box';//card
+import { PopupCard } from './components/Card/popupCard';//card
 import { Form } from './components/form';
 import { Footer } from './components/footer';
 import { CardList } from './components/cardList';
@@ -16,15 +17,16 @@ const breakpoint =[
    {width : 1200 ,itemsToShow : 3}, {width : 1500 ,itemsToShow : 4}
 ]
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       error: null,
       isLoaded: false,
-      //abierto: false,
-      id :1 ,
-      items: null
+      abierto: false,
+      id : 1 ,
+      items: []
+      
     };
     
   }
@@ -49,47 +51,50 @@ class App extends React.Component {
       )
   }
 
-
+  abrirPopup = (param,ide) => {
+     this.setState({
+       abierto: param,
+       id:ide
+      })
+   }
+  
 
 render (){
   
-
+  let className = "overlay";
   const { error, isLoaded } = this.state;
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Loading...;)</div>;
   }
- else {
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          >
-          <h1>Real State Test</h1>
-        </a>
-        </p>
-      </header>
-      <Form/>
-      {/* <div className ='box'>
-        <Card/>
-        <Card/>
-        <Card/>
-       </div>  */}
-       <Carousel breakPoints={breakpoint}>
-         {/* <CardList items={this.state.items}/> */}
-         {this.state.items.map(item => <Card key={item.id} {...item} />)}
-        </Carousel>
-      <Footer/>
-    </div>
-  );
-}
-}
+  if(this.state.abierto){
+    className += ' active';
+         return (  
+         <PopupCard  props={this.state.items.filter(card => card.id === this.state.id )}
+          handler={this.abrirPopup}/>
+         )
+    }
+  else {
+        return (
+           <div className="App">
+             <header className="App-header">
+                 <h1>Real State Test</h1>  
+             </header>
+             <Form/>
+             {/* <div className ='box'>
+               <Card/>
+               <Card/>
+               <Card/>
+             </div>  */}
+               {/* <CardList items={this.state.items}/> */}
+             <Carousel breakPoints={breakpoint}>
+               {this.state.items.map(item => <Card key={item.id} {...item} handler={this.abrirPopup}/>)}
+               </Carousel>
+             <Footer/>
+           </div>
+        );
+     }
+ }
 }
 export default App;
