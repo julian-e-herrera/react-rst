@@ -31,8 +31,6 @@ export class App extends React.Component {
     
   }
 
-
-
   componentDidMount() {
     fetch(endPoint + '?query=new-york&client_id=' + accesKey) 
       .then(res => res.json())
@@ -81,7 +79,7 @@ render (){
         return (
            <div className="App">
              <header className="App-header">
-                 <h1>Real State Test</h1>  
+                 <h1>Real Estate Test</h1>  
              </header>
              <Form/>
              <Carousel breakPoints={breakpoint}>
