@@ -1,13 +1,12 @@
-import React from 'react'
-//import logo from './logo.svg';
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import { Card } from './components/Card/box' //card
+import { PopupBox } from './components/Card/modalbox' //card
 import { PopupCard } from './components/Card/popupCard' //card
 import { Form } from './components/form'
 import { Footer } from './components/footer'
-//import { Connection } from './components/api';
-//import { CardList } from './components/cardList';
 import Carousel from 'react-elastic-carousel'
+import Modal from 'react-modal' ///aplicando a otro comp
 
 const accesKey = 'rQ-_SmO3ayd_uvDdmk1atdqJifxUQahY2IdZM90ux6k'
 const endPoint = 'https://api.unsplash.com/search/photos'
@@ -18,81 +17,59 @@ const breakpoint = [
   { width: 1500, itemsToShow: 4 },
 ]
 
-export class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      error: null,
-      isLoaded: false,
-      abierto: false,
-      id: 1,
-      items: [],
-    }
-  }
+export function App() {
+  const [error, setError] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [abierto, setAbierto] = useState(false)
+  const [id, setId] = useState(1)
+  const [items, setItems] = useState([])
 
-  componentDidMount() {
+  useEffect(() => {
     fetch(endPoint + '?query=new-york&client_id=' + accesKey)
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result)
-          this.setState({
-            isLoaded: true,
-            items: result.results,
-          })
-          console.log(this.state.items)
+          setIsLoaded(true)
+          setItems(result.results)
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          })
+          setIsLoaded(true)
+          setError(error)
         }
       )
+  }, [])
+
+  const abrirPopup = (param, ide) => {
+    setAbierto(param)
+    setId(ide)
   }
 
-  abrirPopup = (param, ide) => {
-    this.setState({
-      abierto: param,
-      id: ide,
-    })
-  }
+  let className = 'overlay'
 
-  render() {
-    let className = 'overlay'
-    const { error, isLoaded } = this.state
-    if (error) {
-      return <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
-      return <div>Loading...;)</div>
-    }
-    if (this.state.abierto) {
-      className += ' active'
-      return (
-        <PopupCard props={this.state.items.filter((card) => card.id === this.state.id)} handler={this.abrirPopup} />
-      )
-    } else {
-      return (
-        <div className="App">
-          <header className="App-header">
-            <h1>Real Estate Test</h1>
-          </header>
-          <Form />
-          <Carousel breakPoints={breakpoint}>
-            {this.state.items.map((item) => (
-              <Card key={item.id} {...item} handler={this.abrirPopup} />
-            ))}
-          </Carousel>
-          <Footer />
-          {/* <div className ='box'>
-               <Card/>
-               <Card/>
-               <Card/>
-             </div>  */}
-          {/* <CardList items={this.state.items}/> */}
-        </div>
-      )
-    }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (!isLoaded) {
+    return <div>Loading...;)</div>
+  }
+  if (abierto) {
+    className += ' active'
+    return <PopupCard props={items.filter((card) => card.id === id)} handler={abrirPopup} />
+  } else {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Real Estate Test</h1>
+        </header>
+        <Form />
+        <Carousel breakPoints={breakpoint}>
+          {items.map((item) => (
+            <Card key={item.id} {...item} handler={abrirPopup} />
+          ))}
+        </Carousel>
+        <Footer />
+      </div>
+    )
   }
 }
+
 export default App

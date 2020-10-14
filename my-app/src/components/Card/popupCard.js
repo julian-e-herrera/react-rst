@@ -41,6 +41,7 @@ export class PopupCard extends React.Component {
       className += ' active'
       return (
         <div>
+          <App />
           <div className={className} id="overlay">
             <div className="popup card " id="popup">
               <div style={interno}>
