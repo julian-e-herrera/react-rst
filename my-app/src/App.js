@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import './App.css'
 import { Card } from './components/Card/box' //card
 import { PopupBox } from './components/Card/modalbox' //card
@@ -24,7 +24,7 @@ export function App() {
   const [id, setId] = useState(1)
   const [items, setItems] = useState([])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch(endPoint + '?query=new-york&client_id=' + accesKey)
       .then((res) => res.json())
       .then(
@@ -37,7 +37,7 @@ export function App() {
           setError(error)
         }
       )
-  }, [])
+  }, [items])
 
   const abrirPopup = (param, ide) => {
     setAbierto(param)
