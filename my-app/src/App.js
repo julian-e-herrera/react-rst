@@ -1,12 +1,10 @@
 import React, { useState, useLayoutEffect } from 'react'
-import './App.css'
+import './App.scss'
 import { Card } from './components/Card/box' //card
-import { PopupBox } from './components/Card/modalbox' //card
 import { PopupCard } from './components/Card/popupCard' //card
 import { Form } from './components/form'
 import { Footer } from './components/footer'
 import Carousel from 'react-elastic-carousel'
-import Modal from 'react-modal' ///aplicando a otro comp
 
 const accesKey = 'rQ-_SmO3ayd_uvDdmk1atdqJifxUQahY2IdZM90ux6k'
 const endPoint = 'https://api.unsplash.com/search/photos'
@@ -37,7 +35,7 @@ export function App() {
           setError(error)
         }
       )
-  }, [items])
+  }, [])
 
   const abrirPopup = (param, ide) => {
     setAbierto(param)
@@ -52,6 +50,7 @@ export function App() {
     return <div>Loading...;)</div>
   }
   if (abierto) {
+    console.log('entra')
     className += ' active'
     return <PopupCard props={items.filter((card) => card.id === id)} handler={abrirPopup} />
   } else {

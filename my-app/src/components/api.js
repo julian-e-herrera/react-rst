@@ -1,64 +1,33 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 
+const accesKey = 'rQ-_SmO3ayd_uvDdmk1atdqJifxUQahY2IdZM90ux6k'
+const endPoint = 'https://api.unsplash.com/search/photos'
+export const Connection = () => {
+  axios.get(endPoint + '?query=new-york&client_id=' + accesKey).then((response) => {
+    console.log(response.data)
+  })
 
- export const Connection = () => {
-     const accesKey = 'rQ-_SmO3ayd_uvDdmk1atdqJifxUQahY2IdZM90ux6k';
-     const endPoint = 'https://api.unsplash.com/search/photos';
-
-
-        fetch(endPoint + '?query=new-york&client_id=' + accesKey)  
-            .then(res => res.json())
-            .then(
-              (result) => {
-                  console.log(result)
-                this.setState({
-                  isLoaded: true,
-                  items: result.results
-                });console.log(this.state.items)
-              },
-              (error) => {
-                this.setState({
-                  isLoaded: true,
-                  error
-                });
-              }
-            )
-          
-      
+  axios(endPoint + '?query=new-york&client_id=' + accesKey)
+    //.then((res) => res.json())
+    .then(
+      (result) => {
+        console.log(result)
+        this.setState({
+          isLoaded: true,
+          items: result.results,
+        })
+        console.log(this.state.items)
+      },
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error,
+        })
+      }
+    )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Connection()
 // const crudder = dominio => recurso => {
 //     const url = `${dominio}/${recurso}`
 //     return ({
@@ -71,21 +40,17 @@ import React from 'react';
 //     })
 // }
 
-
 // let Base = crudder('https://jsonplaceholder.typicode.com');
 // let Photo = Base('photos');
 // let Description = Base('comments')
 
-
-
 // const getPhoto = () => {
-//     return Photo.get();    
+//     return Photo.get();
 // }
 
 // const getComment = () => {
-//     return Description.get();    
+//     return Description.get();
 // }
-
 
 // // Photo.get().then(x => {
 // //     x.filter(res => res.id < 5)
@@ -96,8 +61,6 @@ import React from 'react';
 // };
 // export default Connection;
 
-
-
 // //         <div>
 // //             <a href = {this.props.url}>
 // //                 <img className = 'fotito' src ={this.props.url}></img>
@@ -105,8 +68,6 @@ import React from 'react';
 // //             </a>
 
 // //         </div>
-
-
 
 //    // componentDidMount() {
 //     //   fetch("https://jsonplaceholder.typicode.com/photos")
@@ -130,7 +91,7 @@ import React from 'react';
 //     //       }
 //     //     )
 //     // }
-  
+
 //     // render() {
 //     //   const { error, isLoaded, items } = this.state;
 //     //   if (error) {
@@ -140,11 +101,11 @@ import React from 'react';
 //     //   } else {
 //     //     return (
 //     //       <ul>
-             
+
 //     //         {items.filter(res => res.id < 5).map(item => (//sigo dibujando mal todo
 //     //           <li key={item.title}>
 //     //             <img src={item.url} alt={item.title}></img>
-//     //             {item.title} 
+//     //             {item.title}
 //     //           </li>
 //     //         ))}
 //     //       </ul>

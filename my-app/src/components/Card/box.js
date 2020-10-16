@@ -1,6 +1,5 @@
 import Modal from 'react-modal'
 import React, { useState, useEffect } from 'react'
-import './style.scss'
 
 export function Card(props) {
   const items = props
