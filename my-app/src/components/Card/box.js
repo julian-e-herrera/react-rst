@@ -69,7 +69,7 @@ export function Card(props) {
           <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
           <button onClick={closeModal}>close</button>
           <div>
-            <Card props={props} />I am a fuck**ng modal
+            <Card props={props} />I am a modal
           </div>
         </Modal>
       </div>

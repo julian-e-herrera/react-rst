@@ -5,9 +5,9 @@ import { PopupCard } from './components/Card/popupCard' //card
 import { Form } from './components/form'
 import { Footer } from './components/footer'
 import Carousel from 'react-elastic-carousel'
+import API from './service/service'
+import { Modal } from './components/modal'
 
-const accesKey = 'rQ-_SmO3ayd_uvDdmk1atdqJifxUQahY2IdZM90ux6k'
-const endPoint = 'https://api.unsplash.com/search/photos'
 const breakpoint = [
   { width: 500, itemsToShow: 1 },
   { width: 720, itemsToShow: 2 },
@@ -21,21 +21,27 @@ export function App() {
   const [abierto, setAbierto] = useState(false)
   const [id, setId] = useState(1)
   const [items, setItems] = useState([])
+  const [inputString, setInput] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
   useLayoutEffect(() => {
-    fetch(endPoint + '?query=new-york&client_id=' + accesKey)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true)
-          setItems(result.results)
-        },
-        (error) => {
-          setIsLoaded(true)
-          setError(error)
-        }
-      )
+    API.getAll().then(
+      (response) => {
+        setIsLoaded(true)
+        const all = response.data.results
+        //console.log(all)
+        setItems(all)
+      },
+      (error) => {
+        setIsLoaded(true)
+        setError(error)
+      }
+    )
   }, [])
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
 
   const abrirPopup = (param, ide) => {
     setAbierto(param)
@@ -52,20 +58,26 @@ export function App() {
   if (abierto) {
     console.log('entra')
     className += ' active'
-    return <PopupCard props={items.filter((card) => card.id === id)} handler={abrirPopup} />
+    //return <PopupCard props={items.filter((card) => card.id === id)} handler={abrirPopup} />
+    return (
+      <Modal onClose={handleClose}>
+        <Card props={items.filter((card) => card.id === id)}></Card>
+      </Modal>
+    )
   } else {
+    //setList(items.filter((item) => item.name.toLowerCase().includes(inputString.toLowerCase())))
     return (
       <div className="App">
         <header className="App-header">
           <h1>Real Estate Test</h1>
         </header>
-        <Form />
+        <Form onChange={(text) => setInput({ inputString: text })} />
         <Carousel breakPoints={breakpoint}>
-          {items.map((item) => (
-            <Card key={item.id} {...item} handler={abrirPopup} />
-          ))}
+          {items
+            .filter((item) => item.description.toLowerCase().includes(inputString.toLowerCase()), [])
+            .map((ite) => (console.log(ite), (<Card key={ite.id} {...ite} handler={abrirPopup} />)))}
         </Carousel>
-        <Footer />
+        <Footer onClose={handleClose} />
       </div>
     )
   }
