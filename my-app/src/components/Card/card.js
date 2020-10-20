@@ -23,29 +23,29 @@ export function Card(props) {
     background: ' white',
   }
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  }
+  // const customStyles = {
+  //   content: {
+  //     top: '50%',
+  //     left: '50%',
+  //     right: 'auto',
+  //     bottom: 'auto',
+  //     marginRight: '-50%',
+  //     transform: 'translate(-50%, -50%)',
+  //   },
+  // }
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModalCard, setShowModalCard] = useState(false)
 
   const handleClick = () => {
-    return setShowModal(true)
+    return setShowModalCard(true)
   }
   const handleClose = () => {
-    return setShowModal(false)
+    return setShowModalCard(false)
   }
 
   return (
     <div>
-      {showModal && (
+      {showModalCard && (
         <Modal onClose={handleClose}>
           <Box props={items}></Box>
         </Modal>

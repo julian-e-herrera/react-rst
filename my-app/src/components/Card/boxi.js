@@ -1,8 +1,8 @@
-import Modal from '../modal'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export function Box(props) {
-  const items = props
+  const items = props.props
+  console.log(items)
   const [image, setImage] = useState(`url(${items.urls.raw})`)
   const sti = {
     backgroundImage: image,
@@ -22,32 +22,25 @@ export function Box(props) {
     background: ' white',
   }
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  }
-
-  const [showModal, setShowModal] = useState(false)
-
+  //   const customStyles = {
+  //     content: {
+  //       top: '50%',
+  //       left: '50%',
+  //       right: 'auto',
+  //       bottom: 'auto',
+  //       marginRight: '-50%',
+  //       transform: 'translate(-50%, -50%)',
+  //     },
+  //   }
   const handleClose = () => {
-    return setShowModal(false)
+    return false
   }
 
   const handleClick = () => {
     setImage(`url(${props.urls.raw})`)
-    setShowModal(true)
   }
-
-  ///////////////////////////////////////////////////////////////////////el comportamiento del modal lo debe tener el componente y no la app
   return (
     <div className="pp" style={pp}>
-      <button onClick={handleClick}></button>
       <div className="img" style={sti} alt={items.alt_description}></div>
       <div className="container-text" style={txt}>
         <a href="#" onClick={handleClose}>
