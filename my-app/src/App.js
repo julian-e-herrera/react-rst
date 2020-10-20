@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react'
 import './App.scss'
-import { Card } from './components/Card/box' //card
+import { Card } from './components/Card/card' //card
 import { PopupCard } from './components/Card/popupCard' //card
 import { Form } from './components/form'
 import { Footer } from './components/footer'
@@ -40,7 +40,11 @@ export function App() {
   }, [])
 
   const handleClose = () => {
-    setShowModal(false)
+    return setShowModal(false)
+  }
+
+  const handleClick = () => {
+    setShowModal(true)
   }
 
   const abrirPopup = (param, ide) => {
@@ -55,29 +59,25 @@ export function App() {
   } else if (!isLoaded) {
     return <div>Loading...;)</div>
   }
-  if (abierto) {
-    console.log('entra')
-    className += ' active'
+  if (isLoaded) {
+    // console.log('entra')
+    // className += ' active'
     //return <PopupCard props={items.filter((card) => card.id === id)} handler={abrirPopup} />
-    return (
-      <Modal onClose={handleClose}>
-        <Card props={items.filter((card) => card.id === id)}></Card>
-      </Modal>
-    )
-  } else {
-    //setList(items.filter((item) => item.name.toLowerCase().includes(inputString.toLowerCase())))
     return (
       <div className="App">
         <header className="App-header">
           <h1>Real Estate Test</h1>
         </header>
+
+        {/* //setList(items.filter((item) => item.name.toLowerCase().includes(inputString.toLowerCase()))) */}
+
         <Form onChange={(text) => setInput({ inputString: text })} />
         <Carousel breakPoints={breakpoint}>
           {items
-            .filter((item) => item.description.toLowerCase().includes(inputString.toLowerCase()), [])
-            .map((ite) => (console.log(ite), (<Card key={ite.id} {...ite} handler={abrirPopup} />)))}
+            // .filter((item) => item.description.toLowerCase().includes(inputString.toLowerCase()), [])
+            .map((ite) => (console.log(ite), (<Card key={ite.id} {...ite} handleClick={handleClick} />)))}
         </Carousel>
-        <Footer onClose={handleClose} />
+        <Footer />
       </div>
     )
   }

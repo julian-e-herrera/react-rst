@@ -16,14 +16,15 @@ export function Footer() {
 
   return (
     <div>
-      <button id="btn-abrir-popup" class="btn-abrir-popup" onClick={handleClick}>
-        {showModal && (
-          <Modal onClose={handleClose}>
-            <Login />
-          </Modal>
-        )}
+      <button id="btn-abrir-popup" className="btn-abrir-popup" onClick={handleClick}>
         Admin
       </button>
+      {showModal && (
+        <Modal onClose={handleClose}>
+          <Login />
+        </Modal>
+      )}
+
       <div className="main-footer">
         <div className="container">
           {/* <button id="btn-abrir-popup" class="btn-abrir-popup">Admin</button> */}

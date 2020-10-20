@@ -1,88 +1,72 @@
-import React from 'react'
-import { Photo } from '../photo'
+import Modal from '../modal'
+import React, { useState } from 'react'
+import { Box } from './boxi' //card
 
-//import './style.scss';
+export function Card(props) {
+  const items = props
+  const [image, setImage] = useState(`url(${items.urls.raw})`)
+  const sti = {
+    backgroundImage: image,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }
+  const txt = {
+    width: ' 60%',
+    padding: ' 50px',
+    overflowY: 'hidden',
+  }
+  const pp = {
+    width: '100%',
+    height: ' 500px',
+    position: 'relative',
+    display: 'flex',
+    background: ' white',
+  }
 
-export class Card extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      error: null,
-      isLoaded: false,
-      id: 1,
-      items: null,
-    }
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
   }
-  componentDidMount() {
-    fetch(`https://jsonplaceholder.typicode.com/comments/1`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          console.log(result)
-          this.setState({
-            isLoaded: true,
-            items: result,
-          })
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          })
-        }
-      )
+
+  const [showModal, setShowModal] = useState(false)
+
+  const handleClick = () => {
+    return setShowModal(true)
   }
-  render() {
-    const { error, isLoaded, items } = this.state
-    if (error) {
-      return <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
-      return <div>Loading...;)</div>
-    } else {
-      return (
-        <div className="card">
-          <Photo />
-          <ul className="description">
-            <li>{items.name}</li>
-            <li>{items.email}</li>
-            <li>{items.body}</li>
-          </ul>
+  const handleClose = () => {
+    return setShowModal(false)
+  }
+
+  return (
+    <div>
+      {showModal && (
+        <Modal onClose={handleClose}>
+          <Box props={items}></Box>
+        </Modal>
+      )}
+
+      <div className="pp" style={pp}>
+        <div className="img" style={sti} alt={items.alt_description}></div>
+        <div className="container-text" style={txt}>
+          <a href="#" onClick={handleClick}>
+            <h1 className="title">{items.description}</h1>
+          </a>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam esse illum exercitationem perferendis
+            accusamus, possimus sed molestiae accusantium necessitatibus neque sit aspernatur
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus facere, sequi. Beatae recusandae,
+            officiis sapiente amet quod vero est vel.
+          </p>
         </div>
-        //  <div>
-        //   <Photo />
-        // <div class="container-text">
-        // <h1>Lorem ipsum dolor sit amet, consectetur.</h1>
-        // <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam esse illum exercitationem perferendis accusamus, possimus sed molestiae accusantium necessitatibus neque sit aspernatur</p>
-        // <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus facere, sequi. Beatae recusandae, officiis sapiente amet quod vero est vel.</p>
-        // </div>
-        // </div>
-      )
-    }
-  }
+      </div>
+    </div>
+  )
 }
-
-// function Photo (props) {
-
-//     return (
-//         <div>
-//             <a href = {this.props.url}>
-//                 <img className = 'fotito' src ={this.props.url}></img>
-//                 <span className='span-title'>{this.props.title}</span>
-//             </a>
-
-//         </div>
-//     )
-// }
-
-// function Comment(props) {
-//     return (
-//         <div>
-//             <ul>
-//                 <li>{this.props.name}</li>
-//                 <li>{this.props.mail}</li>
-//                 <li>{this.props.body}</li>
-//             </ul>
-//         </div>
-//     )
-
-// }

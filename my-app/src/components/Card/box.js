@@ -1,4 +1,4 @@
-import Modal from 'react-modal'
+import Modal from '../modal'
 import React, { useState, useEffect } from 'react'
 
 export function Card(props) {
@@ -39,21 +39,36 @@ export function Card(props) {
     },
   }
 
-  let subtitle
-  const [modalIsOpen, setIsOpen] = useState(false)
+  // let subtitle
+  // const [modalIsOpen, setIsOpen] = useState(false)
 
-  function openModal() {
-    setIsOpen(true)
+  // function openModal() {
+  //   setIsOpen(true)
+  //   setImage(`url(${props.urls.raw})`)
+  // }
+
+  // function afterOpenModal() {
+  //   subtitle.style.color = '#f00'
+  // }
+
+  // function closeModal() {
+  //   setIsOpen(false)
+  // }
+
+  //////////////////////////////////////////////////////////////////////
+
+  const [showModal, setShowModal] = useState(false)
+
+  const handleClose = () => {
+    return setShowModal(false)
+  }
+
+  const handleClick = () => {
     setImage(`url(${props.urls.raw})`)
+    setShowModal(true)
   }
 
-  function afterOpenModal() {
-    subtitle.style.color = '#f00'
-  }
-
-  function closeModal() {
-    setIsOpen(false)
-  }
+  ///////////////////////////////////////////////////////////////////////el comportamiento del modal lo debe tener el componente y no la app
 
   if (items.abierto) {
     return (
