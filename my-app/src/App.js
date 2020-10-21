@@ -4,7 +4,7 @@ import { Card } from './components/Card/card' //card
 import { Form } from './components/form'
 import { Footer } from './components/footer'
 import Carousel from 'react-elastic-carousel'
-import API from './service/service'
+import API from './api/service'
 
 const breakpoint = [
   { width: 500, itemsToShow: 1 },
@@ -26,6 +26,7 @@ export function App() {
         setIsLoaded(true)
         const all = response.data.results
         setItems(all)
+        console.log(searching(all))
       },
       (error) => {
         setIsLoaded(true)
@@ -38,12 +39,22 @@ export function App() {
     setShowModal(true)
   }
 
+  const searching = (lista) => {
+    let list =
+      lista && inputString
+        ? lista.filter((item) => lista.description.toLowerCase().includes(inputString.toLowerCase()))
+        : []
+    return list
+    console.log(list)
+  }
+
   if (error) {
     return <div>Error: {error.message}</div>
   } else if (!isLoaded) {
     return <div>Loading...;)</div>
   }
   if (isLoaded) {
+    searching()
     return (
       <div className="App">
         <header className="App-header">
@@ -52,7 +63,7 @@ export function App() {
 
         {/* //setList(items.filter((item) => item.name.toLowerCase().includes(inputString.toLowerCase()))) */}
 
-        <Form onChange={(text) => setInput({ inputString: text })} />
+        <Form onTextChange={(text) => setInput({ inputString: text })} />
         <Carousel breakPoints={breakpoint}>
           {items
             // .filter((item) => item.description.toLowerCase().includes(inputString.toLowerCase()), [])

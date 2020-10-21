@@ -15,7 +15,7 @@ export class Photo extends React.Component {
     }
   }
 
-  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////deprecated
   componentDidMount() {
     fetch(endPoint + '?query=new-york&client_id=' + accesKey)
       .then((res) => res.json())

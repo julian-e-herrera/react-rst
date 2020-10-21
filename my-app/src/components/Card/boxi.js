@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-
+import Fav from '../fav'
 export function Box(props) {
   const items = props.props
-  console.log(items)
+  //console.log(items)
   const [image, setImage] = useState(`url(${items.urls.raw})`)
   const sti = {
     backgroundImage: image,
@@ -32,20 +32,17 @@ export function Box(props) {
   //       transform: 'translate(-50%, -50%)',
   //     },
   //   }
-  const handleClose = () => {
-    return false
-  }
+  //   const handleClose = () => {
+  //     return false
+  //   }
 
-  const handleClick = () => {
-    setImage(`url(${props.urls.raw})`)
-  }
   return (
     <div className="pp" style={pp}>
       <div className="img" style={sti} alt={items.alt_description}></div>
       <div className="container-text" style={txt}>
-        <a href="#" onClick={handleClose}>
-          <h1 className="title">{items.description}</h1>
-        </a>
+        {/* <a href="#" onClick={handleClose}> */}
+        <h1 className="title">{items.description}</h1>
+        {/* </a> */}
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam esse illum exercitationem perferendis
           accusamus, possimus sed molestiae accusantium necessitatibus neque sit aspernatur
@@ -55,6 +52,7 @@ export function Box(props) {
           sapiente amet quod vero est vel.
         </p>
       </div>
+      <Fav />
     </div>
   )
 }
