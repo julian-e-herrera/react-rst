@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react'
 import './App.scss'
 import { Card } from './components/Card/card' //card
-import { Form } from './components/form'
+import { Form } from './components/formi'
 import { Footer } from './components/footer'
 import Carousel from 'react-elastic-carousel'
 import API from './api/service'
@@ -26,7 +26,7 @@ export function App() {
         setIsLoaded(true)
         const all = response.data.results
         setItems(all)
-        console.log(searching(all))
+        //console.log(all)
       },
       (error) => {
         setIsLoaded(true)
@@ -39,13 +39,8 @@ export function App() {
     setShowModal(true)
   }
 
-  const searching = (lista) => {
-    let list =
-      lista && inputString
-        ? lista.filter((item) => lista.description.toLowerCase().includes(inputString.toLowerCase()))
-        : []
-    return list
-    console.log(list)
+  const changeText = (text) => {
+    setInput(text)
   }
 
   if (error) {
@@ -54,7 +49,11 @@ export function App() {
     return <div>Loading...;)</div>
   }
   if (isLoaded) {
-    searching()
+    // let list =
+    //   items && inputString
+    //     ? items.filter((item) => item.description.toLowerCase().includes(inputString.toLowerCase()))
+    //     : []
+    // console.log(list)
     return (
       <div className="App">
         <header className="App-header">
@@ -63,14 +62,14 @@ export function App() {
 
         {/* //setList(items.filter((item) => item.name.toLowerCase().includes(inputString.toLowerCase()))) */}
 
-        <Form onTextChange={(text) => setInput({ inputString: text })} />
-        <Carousel breakPoints={breakpoint}>
-          {items
+        <Form />
+        {/* <Carousel breakPoints={breakpoint}>
+          {list
             // .filter((item) => item.description.toLowerCase().includes(inputString.toLowerCase()), [])
             .map((ite) => (
               <Card key={ite.id} {...ite} handleClick={handleClick} />
             ))}
-        </Carousel>
+        </Carousel> */}
         <Footer />
       </div>
     )
