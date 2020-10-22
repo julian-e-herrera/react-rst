@@ -1,4 +1,6 @@
 import React from 'react'
+import ButtonStyled from './styled/button'
+
 export function Login() {
   return (
     <div>
@@ -10,7 +12,7 @@ export function Login() {
           <input type="text" id="usuario" />
           <label for="password">Password</label>
           <input type="text" id="password" />
-          <button className="btn-">Log In</button>
+          <ButtonStyled>Log In</ButtonStyled>
         </form>
       </div>
     </div>

@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import ModalStyled from './styled/modal'
+import ButtonStyled from './styled/button'
+
 function Modal({ children, onClose }) {
   return (
-    <div className="modal">
+    <ModalStyled>
       <div className="modal-contenido">
-        <button className="btn-" onClick={onClose}>
-          Close
-        </button>
+        <ButtonStyled onClick={onClose}>Close</ButtonStyled>
         {children}
       </div>
-    </div>
+    </ModalStyled>
   )
 }
 export default function ModalPortal({ children, onClose }) {

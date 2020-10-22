@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import Modal from './modal'
 import Login from './login'
+import FooterStyled from './styled/footer'
+import ButtonStyled from './styled/button'
 
 export function Footer() {
   const [showModal, setShowModal] = useState(false)
@@ -16,16 +18,14 @@ export function Footer() {
 
   return (
     <div>
-      <button id="btn-abrir-popup" className="btn-abrir-popup" onClick={handleClick}>
-        Admin
-      </button>
+      <ButtonStyled onClick={handleClick}>Admin</ButtonStyled>
       {showModal && (
         <Modal onClose={handleClose}>
           <Login />
         </Modal>
       )}
 
-      <div className="main-footer">
+      <FooterStyled>
         <div className="container">
           {/* <button id="btn-abrir-popup" class="btn-abrir-popup">Admin</button> */}
           <hr />
@@ -40,7 +40,7 @@ export function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </FooterStyled>
     </div>
   )
 }
