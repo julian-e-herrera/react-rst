@@ -21,9 +21,9 @@ async function getAll() {
   }
 }
 
-async function get(id) {
+async function getUser(id) {
   try {
-    const response = await api.get(`/photos/${id}`)
+    const response = await api.get(`/users/${id}`)
     return response
   } catch (error) {
     console.error(error)
@@ -31,43 +31,29 @@ async function get(id) {
   }
 }
 ////////////////users
-async function create(data) {
-  try {
-    const response = await apiUser.post('', data)
-    return response
-  } catch (error) {
-    console.error(error)
-    return error.message
-  }
-  //return axios.post('/user/', data)
+const createUser = (data) => {
+  return apiUser.post('/users', data)
 }
 
-async function getUsers() {
-  try {
-    //const response = await axios.get(endPoint + '?query=new-york&client_id=' + accesKey)
-    const response = await apiUser.get('users')
-    // console.log(response.data)
-    // console.log(response.status)
-    // console.log(response.statusText)
-    // console.log(response.headers)
-    // console.log(response.config)
-    return response
-  } catch (error) {
-    console.error(error)
-    return error.message
-  }
+const getUsers = () => {
+  return apiUser.get('/users')
+  // console.log(response.data)
+  // console.log(response.status)
+  // console.log(response.statusText)
+  // console.log(response.headers)
+  // console.log(response.config)
 }
 
-const update = (id, data) => {
-  return axios.put(`/photos/${id}`, data)
+const updateUser = (id, data) => {
+  return apiUser.put(`/users/${id}`, data)
 }
 
-const remove = (id) => {
-  return axios.delete(`/photos/${id}`)
+const removeUser = (id) => {
+  return axios.delete(`/users/${id}`)
 }
 
-const removeAll = () => {
-  return axios.delete(`/photos/`)
+const removeAllUsers = () => {
+  return axios.delete(`/users/`)
 }
 
 const findByTitle = (title) => {
@@ -76,11 +62,11 @@ const findByTitle = (title) => {
 
 export default {
   getAll,
-  get,
-  create,
-  update,
-  remove,
-  removeAll,
+  getUser,
+  createUser,
+  updateUser,
+  removeUser,
+  removeAllUsers,
   findByTitle,
   getUsers,
 }

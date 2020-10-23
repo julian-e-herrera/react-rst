@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Fav from '../fav'
 export function Box(props) {
   const items = props.props
-  const [image, setImage] = useState(`url(${items.urls.raw})`)
+  const [image] = useState(`url(${items.urls.raw})`)
   const sti = {
     backgroundImage: image,
     backgroundSize: 'cover',
@@ -35,7 +35,7 @@ export function Box(props) {
           sapiente amet quod vero est vel.
         </p>
       </div>
-      <Fav />
+      <Fav id={items.id} />
     </div>
   )
 }

@@ -16,7 +16,7 @@ export function Form() {
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [items, setItems] = useState([])
-  const [showModal, setShowModal] = useState(false)
+  const [, setShowModal] = useState(false)
   const [inputs, setInputs] = useState('')
 
   const handleInputChange = (event) => {

@@ -4,7 +4,7 @@ import { Box } from './boxi' //card
 
 export function Card(props) {
   const items = props
-  const [image, setImage] = useState(`url(${items.urls.raw})`)
+  const [image] = useState(`url(${items.urls.raw})`)
   const sti = {
     backgroundImage: image,
     backgroundSize: 'cover',

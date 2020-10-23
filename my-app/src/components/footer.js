@@ -18,7 +18,7 @@ export function Footer() {
 
   return (
     <div>
-      <ButtonStyled onClick={handleClick}>Admin</ButtonStyled>
+      <ButtonStyled onClick={handleClick}>Login</ButtonStyled>
       {showModal && (
         <Modal onClose={handleClose}>
           <Login />

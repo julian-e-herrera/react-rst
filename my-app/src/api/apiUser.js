@@ -1,5 +1,5 @@
 import axios from 'axios'
-const userEndPoint = 'http://localhost:3000/mock.json'
+const userEndPoint = 'http://localhost:3000/'
 
 export default axios.create({
   baseURL: userEndPoint,
