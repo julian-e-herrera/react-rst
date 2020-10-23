@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Fav({ id }) {
   const handleClick = () => {
-    alert({ id })
+    alert('please contact support')
   }
   const stile = {
     display: 'contents',

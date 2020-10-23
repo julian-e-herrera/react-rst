@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import breakpoint from './breakpoints'
-const Modal = styled.div`
+const Login = styled.div`
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
@@ -22,4 +22,4 @@ const Modal = styled.div`
   }
 `
 
-export default Modal
+export default Login

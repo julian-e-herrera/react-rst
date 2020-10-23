@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Fav from '../fav'
 export function Box(props) {
   const items = props.props
-  //console.log(items)
   const [image, setImage] = useState(`url(${items.urls.raw})`)
   const sti = {
     backgroundImage: image,
@@ -10,39 +9,23 @@ export function Box(props) {
     backgroundPosition: 'center',
   }
   const txt = {
-    width: ' 60%',
-    padding: ' 50px',
+    // width: ' 55%',
+    padding: ' 20px',
     overflowY: 'hidden',
   }
   const pp = {
-    width: '100%',
+    width: 'p0%',
     height: ' 500px',
     position: 'relative',
     display: 'flex',
     background: ' white',
   }
 
-  //   const customStyles = {
-  //     content: {
-  //       top: '50%',
-  //       left: '50%',
-  //       right: 'auto',
-  //       bottom: 'auto',
-  //       marginRight: '-50%',
-  //       transform: 'translate(-50%, -50%)',
-  //     },
-  //   }
-  //   const handleClose = () => {
-  //     return false
-  //   }
-
   return (
     <div className="pp" style={pp}>
       <div className="img" style={sti} alt={items.alt_description}></div>
       <div className="container-text" style={txt}>
-        {/* <a href="#" onClick={handleClose}> */}
         <h1 className="title">{items.description}</h1>
-        {/* </a> */}
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam esse illum exercitationem perferendis
           accusamus, possimus sed molestiae accusantium necessitatibus neque sit aspernatur
