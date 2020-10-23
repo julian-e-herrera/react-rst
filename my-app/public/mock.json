@@ -1,0 +1,10 @@
+{
+  "status": "OK",
+  "users": [
+    {
+      "name": "julian",
+      "pass": "admin",
+      "favs": []
+    }
+  ]
+}

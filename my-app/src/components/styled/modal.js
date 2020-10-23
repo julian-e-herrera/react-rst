@@ -11,6 +11,10 @@ const Modal = styled.div`
   justify-content: center;
   display: flex;
 
+  h1 {
+    transition-scale: 0.9;
+  }
+
   @media only screen and ${breakpoint.device.xs} {
     flex-direction: column;
   }

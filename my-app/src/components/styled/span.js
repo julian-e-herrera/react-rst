@@ -7,7 +7,7 @@ const Span = styled.span`
   position: absolute;
   color: white;
   font-family: $theme-span;
-
+  overflow: hidden;
   word-wrap: break-word;
 
   &:hover {

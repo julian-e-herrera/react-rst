@@ -1,5 +1,7 @@
 import axios from 'axios'
 import api from './api'
+import apiUser from './apiUser'
+
 // const accesKey = 'rQ-_SmO3ayd_uvDdmk1atdqJifxUQahY2IdZM90ux6k'
 // const endPoint = 'https://api.unsplash.com/search/photos'
 
@@ -28,9 +30,32 @@ async function get(id) {
     return error.message
   }
 }
+////////////////users
+async function create(data) {
+  try {
+    const response = await apiUser.post('', data)
+    return response
+  } catch (error) {
+    console.error(error)
+    return error.message
+  }
+  //return axios.post('/user/', data)
+}
 
-const create = (data) => {
-  return axios.post('/photos/', data)
+async function getUsers() {
+  try {
+    //const response = await axios.get(endPoint + '?query=new-york&client_id=' + accesKey)
+    const response = await apiUser.get('users')
+    // console.log(response.data)
+    // console.log(response.status)
+    // console.log(response.statusText)
+    // console.log(response.headers)
+    // console.log(response.config)
+    return response
+  } catch (error) {
+    console.error(error)
+    return error.message
+  }
 }
 
 const update = (id, data) => {
@@ -57,4 +82,5 @@ export default {
   remove,
   removeAll,
   findByTitle,
+  getUsers,
 }
