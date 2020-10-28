@@ -23,7 +23,7 @@ async function getAll() {
 
 async function getUser(id) {
   try {
-    const response = await api.get(`/users/${id}`)
+    const response = await apiUser.get(`/users/${id}`)
     return response
   } catch (error) {
     console.error(error)

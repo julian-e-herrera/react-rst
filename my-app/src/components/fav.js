@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-
+import API from '../api/service'
 export default function Fav({ id }) {
+  const [favs, setFav] = useState([])
+
   const handleClick = () => {
     setFaved(!isFaved)
     //alert('Like this') deberia sumarse a lista de favs

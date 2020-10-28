@@ -8,24 +8,37 @@ export function Login() {
     pass: '',
     favs: [],
   })
-  async function request() {
-    API.createUser(user).then(
+  const [isLoggin, setLoggin] = useState(false)
+  const [users, setUsers] = useState([])
+
+  async function checkUser() {
+    API.getUsers().then(
       (response) => {
         const all = response.data
         console.log(all)
+        setUsers(all)
+        //console.log(users)
+        //console.log(true)
       },
       (error) => {
         console.log(error)
       }
     )
   }
+
+  const filterUser = (data) => {
+    const uno = (users.filter((test) => data.name == test.name), {})
+    console.log(uno)
+    return uno
+  }
+
   const handleInputChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
 
   const sendData = (event) => {
     event.preventDefault()
-    request()
+    console.log(filterUser(user))
     console.log(user)
   }
 
@@ -38,9 +51,7 @@ export function Login() {
         <input type="text" id="user" name="name" onChange={handleInputChange} />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="pass" onChange={handleInputChange} />
-        <ButtonStyled type="submit" onClick={sendData}>
-          Log In
-        </ButtonStyled>
+        <ButtonStyled onClick={sendData}>Log In</ButtonStyled>
       </form>
     </div>
   )

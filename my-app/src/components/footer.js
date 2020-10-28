@@ -1,12 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import Modal from './modal'
-import Login from './login'
+import Login from './log'
 import FooterStyled from './styled/footer'
 import ButtonStyled from './styled/button'
+import NewLogin from './newLog'
 
 export function Footer() {
   const [showModal, setShowModal] = useState(false)
+  const [showRg, setShowRg] = useState(false)
 
   const handleClose = () => {
     return setShowModal(false)
@@ -15,6 +17,12 @@ export function Footer() {
   const handleClick = () => {
     setShowModal(true)
   }
+  const rgShow = () => {
+    setShowRg(true)
+  }
+  const rgClose = () => {
+    return setShowRg(false)
+  }
 
   return (
     <div>
@@ -22,6 +30,12 @@ export function Footer() {
       {showModal && (
         <Modal onClose={handleClose}>
           <Login />
+        </Modal>
+      )}
+      <ButtonStyled onClick={rgShow}>Register</ButtonStyled>
+      {showRg && (
+        <Modal onClose={rgClose}>
+          <NewLogin />
         </Modal>
       )}
 

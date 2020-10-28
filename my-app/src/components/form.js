@@ -35,7 +35,7 @@ export function Form() {
         setIsLoaded(true)
         const all = response.data.results
         setItems(all)
-        console.log(all)
+        //   console.log(all)
       },
       (error) => {
         setIsLoaded(true)
