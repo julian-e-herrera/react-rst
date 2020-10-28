@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import userContext from './userContext'
 import userReducer from './userReducer'
-import { USER_LOGIN, USER_SET } from '../types'
+import { USER_LOGIN, USER_GET } from '../types'
 
 const UserState = (props) => {
   const usuarios = [
@@ -43,9 +43,9 @@ const UserState = (props) => {
       payload: login,
     })
   }
-  const setUsers = () => {
+  const getUsers = () => {
     dispatch({
-      type: USER_SET,
+      type: USER_GET,
       payload: usuarios,
     })
   }
@@ -56,7 +56,7 @@ const UserState = (props) => {
         isLogged: state.isLogged,
         users: state.users,
         showLogin,
-        setUsers,
+        getUsers,
       }}
     >
       {props.children}

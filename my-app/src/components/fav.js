@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import API from '../api/service'
+import { users } from '../components/context/userState'
 export default function Fav({ id }) {
   const [favs, setFav] = useState([])
 
