@@ -1,6 +1,6 @@
 import Modal from '../modal'
 import React, { useState } from 'react'
-import { Box } from './boxi' //card
+import { Box } from './box' //card
 
 export function Card(props) {
   const items = props

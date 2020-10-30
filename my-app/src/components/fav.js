@@ -1,19 +1,44 @@
-import React, { useState } from 'react'
-import { users } from '../components/context/userState'
+import React, { useEffect, useState } from 'react'
 export default function Fav({ id }) {
-  const [favs, setFav] = useState([])
-
-  const handleClick = () => {
-    setFaved(!isFaved)
-    //alert('Like this') deberia sumarse a lista de favs
+  const favsInitial = JSON.parse(localStorage.getItem('favs'))
+  if (!favsInitial) {
+    favsInitial = []
   }
+  const [favs, setFavs] = useState(favsInitial)
+  const [isFavorite, setFavorite] = useState(false)
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    setFavorite(!isFavorite)
+    if (isFavorite) {
+      addFav(id)
+    } else {
+      deleteFav(id)
+    }
+  }
+  const addFav = (id) => {
+    setFavs([...favs, id])
+  }
+
+  const deleteFav = (id) => {
+    const updateFavs = favs.filter((fav) => fav !== id)
+    setFavs(updateFavs)
+  }
+  useEffect(() => {
+    if (favsInitial) {
+      localStorage.setItem('favs', JSON.stringify(favs))
+    } else {
+      localStorage.setItem('favs', JSON.stringify([]))
+    }
+  }, [favs])
+
   const stile = {
     display: 'contents',
     background: ' white',
     colot: 'purple',
   }
-  const [isFaved, setFaved] = useState(false)
-  const [label, emoji] = isFaved ? ['Remove Gif from favorites', '☠'] : ['Add Gif to favorites', '💜']
+  const [label, emoji] = isFavorite ? ['Add to favorites', '💜'] : ['Remove from favorites', '➖']
+
   return (
     <>
       <button style={stile} className="Fav" label={label} onClick={handleClick}>

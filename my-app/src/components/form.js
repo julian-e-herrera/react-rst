@@ -44,6 +44,17 @@ export function Form() {
     )
   }, [])
 
+  const showFavs = () => {
+    const favsLocal = JSON.parse(localStorage.getItem('favs'))
+    if (!favsLocal) {
+      favsLocal = []
+    } else {
+      const Favs = items.filter((item) => favsLocal.includes(item.id))
+      console.log(Favs)
+      setItems(Favs)
+    }
+  }
+
   const handleClick = () => {
     setShowModal(true)
   }
@@ -67,6 +78,7 @@ export function Form() {
               onChange={handleInputChange}
             ></input>
             <ButtonStyled type="submit">Search</ButtonStyled>
+            <ButtonStyled onClick={showFavs}>Favorites</ButtonStyled>
           </form>
           <h2>{inputs}</h2>
         </div>

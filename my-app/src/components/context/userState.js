@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import userContext from './userContext'
 import userReducer from './userReducer'
-import { USER_LOGIN, USER_GET } from '../types'
+import { USER_LOGIN, USER_GET, GET_FAVS } from '../types'
 
 const UserState = (props) => {
   const usuarios = [
@@ -9,7 +9,7 @@ const UserState = (props) => {
       id: 1,
       name: 'julian',
       pass: 'admin',
-      favs: [],
+      favs: ['XS3q-m3aGEM', 'Rww63pSEAkk', '548KRAe7_L0'],
     },
     {
       name: 'usuario',
@@ -49,6 +49,12 @@ const UserState = (props) => {
       payload: usuarios,
     })
   }
+  const getFavs = () => {
+    dispatch({
+      type: GET_FAVS,
+      payload: usuarios.favs,
+    })
+  }
 
   return (
     <userContext.Provider
@@ -57,6 +63,7 @@ const UserState = (props) => {
         users: state.users,
         showLogin,
         getUsers,
+        getFavs,
       }}
     >
       {props.children}
