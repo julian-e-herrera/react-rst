@@ -4,7 +4,7 @@ import { Form } from './components/form'
 import { Footer } from './components/footer'
 import HeaderStyled from '../src/components/styled/header'
 import SpanStyled from '../src/components/styled/span'
-///importar el context
+///
 import UserContext from '../src/components/context/userState'
 export function App() {
   return (

@@ -14,7 +14,7 @@ export function Box(props) {
     overflowY: 'hidden',
   }
   const pp = {
-    width: 'p0%',
+    width: '70%',
     height: ' 500px',
     position: 'relative',
     display: 'flex',

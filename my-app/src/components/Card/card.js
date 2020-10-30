@@ -21,6 +21,7 @@ export function Card(props) {
     position: 'relative',
     display: 'flex',
     background: ' white',
+    boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)',
   }
   const [showModalCard, setShowModalCard] = useState(false)
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 export default function Fav({ id }) {
-  const favsInitial = JSON.parse(localStorage.getItem('favs'))
+  let favsInitial = JSON.parse(localStorage.getItem('favs'))
   if (!favsInitial) {
     favsInitial = []
   }
@@ -8,6 +8,7 @@ export default function Fav({ id }) {
   const [isFavorite, setFavorite] = useState(false)
 
   const handleClick = (e) => {
+    //abstraer logica en componente padre
     e.preventDefault()
     setFavorite(!isFavorite)
     if (isFavorite) {
@@ -35,7 +36,8 @@ export default function Fav({ id }) {
   const stile = {
     display: 'contents',
     background: ' white',
-    colot: 'purple',
+    color: 'purple',
+    transitionScale: '0.9',
   }
   const [label, emoji] = isFavorite ? ['Add to favorites', '💜'] : ['Remove from favorites', '➖']
 

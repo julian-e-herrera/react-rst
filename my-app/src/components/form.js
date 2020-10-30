@@ -4,6 +4,7 @@ import { Card } from './Card/card'
 import Carousel from 'react-elastic-carousel'
 import API from '../api/service'
 import ButtonStyled from './styled/button'
+import Modal from './modal'
 
 const breakpoint = [
   { width: 500, itemsToShow: 1 },
@@ -17,6 +18,7 @@ export function Form() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [items, setItems] = useState([])
   const [, setShowModal] = useState(false)
+  const [showModalFav, setShowModalFav] = useState(false)
   const [inputs, setInputs] = useState('')
 
   const handleInputChange = (event) => {
@@ -26,7 +28,7 @@ export function Form() {
   const sendData = (event) => {
     event.preventDefault()
     console.log('enviando datos...' + inputs)
-    event.target.reset() //limpia
+    event.target.reset()
   }
 
   useLayoutEffect(() => {
@@ -35,7 +37,6 @@ export function Form() {
         setIsLoaded(true)
         const all = response.data.results
         setItems(all)
-        //   console.log(all)
       },
       (error) => {
         setIsLoaded(true)
@@ -45,18 +46,21 @@ export function Form() {
   }, [])
 
   const showFavs = () => {
-    const favsLocal = JSON.parse(localStorage.getItem('favs'))
+    let favsLocal = JSON.parse(localStorage.getItem('favs'))
     if (!favsLocal) {
-      favsLocal = []
+      favsLocal = items
     } else {
-      const Favs = items.filter((item) => favsLocal.includes(item.id))
+      const Favs = items.filter((item) => favsLocal.includes(item.id)) //item favorites
       console.log(Favs)
-      setItems(Favs)
+      return Favs
     }
+  }
+  const handleClose = () => {
+    return setShowModalFav(false)
   }
 
   const handleClick = () => {
-    setShowModal(true)
+    setShowModalFav(true)
   }
   if (error) {
     return <div>Error: {error.message}</div>
@@ -78,7 +82,17 @@ export function Form() {
               onChange={handleInputChange}
             ></input>
             <ButtonStyled type="submit">Search</ButtonStyled>
-            <ButtonStyled onClick={showFavs}>Favorites</ButtonStyled>
+
+            <ButtonStyled onClick={handleClick}>Favorites</ButtonStyled>
+            {showModalFav && (
+              <Modal onClose={handleClose}>
+                <Carousel breakPoints={breakpoint}>
+                  {showFavs().map((ite) => (
+                    <Card key={ite.id} {...ite} handleClick={handleClick} />
+                  ))}
+                </Carousel>
+              </Modal>
+            )}
           </form>
           <h2>{inputs}</h2>
         </div>

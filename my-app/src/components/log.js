@@ -21,16 +21,16 @@ export function Login() {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
 
-  const sendData = (event) => {
-    event.preventDefault()
+  // const sendData = (event) => {
+  //   event.preventDefault()
 
-    console.log(user)
-  }
+  //   console.log(user)
+  // }
 
-  const onSubmit = (event) => {
-    //lok
-    event.preventDefault()
-  }
+  // const onSubmit = (event) => {
+  //   //lok
+  //   event.preventDefault()
+  // }
   const checkUser = (event) => {
     event.preventDefault()
     setUserValid(users.filter((item) => item.name === user.name && item.pass === user.pass))
