@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 export const Property = (props) => {
   const item = props
-  const [image] = useState(`url('${item.urls.raw}')`)
+  const [image] = useState(item.urls.raw)
   const sti = {
-    backgroundImage: image,
+    backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    width: '100%',
+    height: '100%', ///abstraer esto en un styled component
   }
   const txt = {
     width: ' 60%',
