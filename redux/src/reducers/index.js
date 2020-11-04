@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import userReducer from './userReducer'
+import estateReducer from './estateReducer'
 
 export default combineReducers({
-  estate: userReducer,
+  users: userReducer,
+  estate: estateReducer,
 })

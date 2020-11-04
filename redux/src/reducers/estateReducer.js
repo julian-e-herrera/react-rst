@@ -1,25 +1,26 @@
-import { ADD_FAV, ADD_USER, ADD_USER_SUCCESS, ADD_USER_ERROR } from '../types'
+import { INIT_DOWN_ESTATE, GET_ESTATE_SUCCESS, DOWN_ESTATE_ERROR } from '../types'
 
 const initialState = {
-  users: [],
+  estate: [],
   error: false,
   loading: false,
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case ADD_USER:
+    case INIT_DOWN_ESTATE:
       return {
         ...state,
         loading: action.payload,
       }
-    case ADD_USER_SUCCESS:
+    case GET_ESTATE_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: [...state.users, action.payload],
+        error: false,
+        estate: action.payload,
       }
-    case ADD_USER_ERROR:
+    case DOWN_ESTATE_ERROR:
       return {
         ...state,
         loading: false,

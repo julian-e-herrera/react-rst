@@ -1,0 +1,113 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "julian",
+      "pass": "admin",
+      "favs": [
+        "XS3q-m3aGEM",
+        "Rww63pSEAkk",
+        "548KRAe7_L0"
+      ]
+    },
+    {
+      "name": "usuario",
+      "pass": "noadmin",
+      "id": 37,
+      "favs": [
+        "XS3q-m3aGEM",
+        "Rww63pSEAkk",
+        "548KRAe7_L0"
+      ]
+    },
+    {
+      "name": "alberto",
+      "pass": "1234",
+      "favs": [],
+      "id": 38
+    },
+    {
+      "name": "nuevo",
+      "pass": "nuevo",
+      "favs": [],
+      "id": 39
+    },
+    {
+      "name": "carles",
+      "pass": "user",
+      "confirmPass": "user",
+      "favs": [],
+      "id": 40
+    },
+    {
+      "name": "carles",
+      "pass": "user",
+      "confirmPass": "user",
+      "favs": [],
+      "id": 41
+    },
+    {
+      "name": "carles",
+      "pass": "user",
+      "confirmPass": "user",
+      "favs": [],
+      "id": 42
+    },
+    {
+      "name": "ultimo ",
+      "pass": "user",
+      "confirmPass": "user",
+      "favs": [],
+      "id": 43
+    },
+    {
+      "name": "testeando",
+      "pass": "sss",
+      "confirmPass": "sss",
+      "favs": [],
+      "id": 44
+    },
+    {
+      "name": "agregando ",
+      "pass": "el ",
+      "confirmPass": "nuevo",
+      "favs": [],
+      "id": 45
+    },
+    {
+      "name": "alberto",
+      "pass": "wwww",
+      "confirmPass": "wwww",
+      "favs": [],
+      "id": 46
+    },
+    {
+      "name": "alerta",
+      "pass": "integrada",
+      "confirmPass": "con lin",
+      "favs": [],
+      "id": 47
+    },
+    {
+      "name": "alertabb",
+      "pass": "integradabb",
+      "confirmPass": "con linbb",
+      "favs": [],
+      "id": 48
+    },
+    {
+      "name": "sss",
+      "pass": "ssss",
+      "confirmPass": "ssss",
+      "favs": [],
+      "id": 49
+    },
+    {
+      "name": "creoqesta",
+      "pass": "arreglado",
+      "confirmPass": "typof",
+      "favs": [],
+      "id": 50
+    }
+  ]
+}

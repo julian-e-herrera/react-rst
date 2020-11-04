@@ -1,4 +1,9 @@
-export const ADD_FAV = 'ADD_FAV'
 export const ADD_USER = 'ADD_USER'
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS'
 export const ADD_USER_ERROR = 'ADD_USER_ERROR'
+
+export const ADD_FAV = 'ADD_FAV'
+
+export const INIT_DOWN_ESTATE = 'INIT_DOWN_ESTATE'
+export const GET_ESTATE_SUCCESS = 'GET_ESTATE_SUCCESS'
+export const DOWN_ESTATE_ERROR = 'DOWN_ESTATE_ERROR'

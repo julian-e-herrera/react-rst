@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import ButtonStyled from '../styled/button'
-const NewUser = () => {
+import { useDispatch, useSelector } from 'react-redux'
+//actionredx
+import { createUser } from '../actions/userActions'
+const NewUser = ({ history }) => {
+  ///state del compnente
   const [user, setUser] = useState({
     name: '',
     pass: '',
@@ -9,17 +13,30 @@ const NewUser = () => {
   })
 
   const { name, password, confirmPass } = user
+  const error = useSelector((state) => state.users.error)
 
   const handleInputChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
+  ///crea una funcion al utilizar use dispatch
+  const dispatch = useDispatch()
 
-  const onSubmit = (event) => {
-    event.preventDefault()
+  ////acceder store del state
+  const loading = useSelector((state) => state.users.loading)
+  console.log(loading)
+  const addUser = (user) => dispatch(createUser(user))
+  const submitNewUser = (e) => {
+    e.preventDefault()
+    // //validar form
+
+    addUser(user)
+    //redirect home
+    history.push('/')
   }
+
   return (
     <div className="popup" id="popup">
-      <form>
+      <form onSubmit={submitNewUser}>
         <h3>Sign-in</h3>
         <h4>Please Submit your access.</h4>
         <label htmlFor="usuario">User</label>
@@ -30,6 +47,8 @@ const NewUser = () => {
         <input type="password" id="confirmPass" name="confirmPass" value={confirmPass} onChange={handleInputChange} />
         <ButtonStyled>Sign-in</ButtonStyled>
       </form>
+      {loading ? <p>Loading...</p> : null}
+      {error ? <p>Hubo un console.error();</p> : null}
     </div>
   )
 }
