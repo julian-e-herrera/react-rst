@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import HeaderStyled from './header-styled'
+import HeaderStyled, { FormSearch } from './header-styled'
 import { Link } from 'react-router-dom'
 import ButtonStyled from '../../styled/button'
 import Modal from '../modal'
@@ -37,10 +37,10 @@ const Header = () => {
         </ButtonStyled>
       </HeaderStyled>{' '}
       <div className="box-search">
-        <form id="form_search">
+        <FormSearch>
           <input type="text" name="text" id="input_value" placeholder="Please enter value"></input>
           <ButtonStyled type="submit">Search</ButtonStyled>
-        </form>
+        </FormSearch>
       </div>
     </Fragment>
   )

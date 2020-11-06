@@ -39,6 +39,10 @@ const Header = styled.div`
     align-self: flex-end;
   }
   
+  
+`
+export const FormSearch = styled.form`
+  text-align: center;
 `
 
 export default Header
