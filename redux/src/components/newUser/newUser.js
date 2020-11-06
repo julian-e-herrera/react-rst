@@ -44,11 +44,35 @@ const NewUser = () => {
         <h3>Sign-in</h3>
         <h4>Please Submit your access.</h4>
         <label htmlFor="usuario">User</label>
-        <input type="text" id="user" name="name" value={name} onChange={handleInputChange} />
+        <input
+          type="text"
+          id="user"
+          name="name"
+          value={name}
+          placeholder=" name"
+          onChange={handleInputChange}
+          required
+        />
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="pass" value={password} onChange={handleInputChange} />
+        <input
+          type="password"
+          id="password"
+          name="pass"
+          value={password}
+          placeholder="passsword"
+          onChange={handleInputChange}
+          required
+        />
         <label htmlFor="confirmPass">Confirm Password</label>
-        <input type="password" id="confirmPass" name="confirmPass" value={confirmPass} onChange={handleInputChange} />
+        <input
+          type="password"
+          id="confirmPass"
+          name="confirmPass"
+          value={confirmPass}
+          placeholder="Repeat password"
+          onChange={handleInputChange}
+          required
+        />
         <ButtonStyled>Sign-in</ButtonStyled>
       </form>
       {loading ? <p>Loading...</p> : null}
