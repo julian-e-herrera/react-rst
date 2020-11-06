@@ -12,6 +12,7 @@ export const Text = styled.div`
   width: 60%;
   padding: 50px;
   overflowy: hidden;
+  font-family: 'Montserrat', Verdana, Geneva, Tahoma, serif;
   a {
     text-decoration: none;
     color: black;

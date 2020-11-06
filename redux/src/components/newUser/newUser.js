@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
-import ButtonStyled from '../styled/button'
+import ButtonStyled from '../../styled/button'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+
+import NewUserLogin from './newUser-styled'
 //actionredx
-import { createUser } from '../actions/userActions'
-const NewUser = ({ history }) => {
+import { createUser } from '../../actions/userActions'
+const NewUser = () => {
+  const { history } = useHistory()
   ///state del compnente
   const [user, setUser] = useState({
     name: '',
@@ -31,11 +35,11 @@ const NewUser = ({ history }) => {
 
     addUser(user)
     //redirect home
-    history.push('/')
+    history.push('/') //no estaria andando
   }
 
   return (
-    <div className="popup" id="popup">
+    <NewUserLogin>
       <form onSubmit={submitNewUser}>
         <h3>Sign-in</h3>
         <h4>Please Submit your access.</h4>
@@ -49,7 +53,7 @@ const NewUser = ({ history }) => {
       </form>
       {loading ? <p>Loading...</p> : null}
       {error ? <p>Hubo un console.error();</p> : null}
-    </div>
+    </NewUserLogin>
   )
 }
 

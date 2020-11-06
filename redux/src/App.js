@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './components/header/header'
 import Home from './components/home'
 import Favs from './components/favs'
-import NewUser from './components/newUser'
+import NewUser from './components/newUser/newUser'
 import Footer from './components/footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //redux

@@ -18,10 +18,27 @@ const Header = styled.div`
   a {
     text-decoration: none;
     color: white;
+      justify-content: center;
+      opacity: 1;
+      animation-name: fadeInOpacity;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in;
+      animation-duration: 1s;
+    }
+  
+    @keyframes fadeInOpacity {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   }
   button {
     align-self: flex-end;
   }
+  
 `
 
 export default Header
