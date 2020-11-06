@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getEstateAction } from '../actions/estateActions'
 import Carousel from 'react-elastic-carousel'
-import Property from './property'
+import Property from './property/property'
 
 const breakpoint = [
   { width: 500, itemsToShow: 1 },

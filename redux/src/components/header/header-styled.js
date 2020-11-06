@@ -19,6 +19,9 @@ const Header = styled.div`
     text-decoration: none;
     color: white;
   }
+  button {
+    align-self: flex-end;
+  }
 `
 
 export default Header

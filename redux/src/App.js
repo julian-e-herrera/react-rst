@@ -1,9 +1,10 @@
 import './App.css'
-import React, { Fragment } from 'react'
+import React from 'react'
 import Header from './components/header/header'
 import Home from './components/home'
 import Favs from './components/favs'
 import NewUser from './components/newUser'
+import Footer from './components/footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //redux
 import { Provider } from 'react-redux'
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/favs" component={Favs}></Route>
             <Route exact path="/newUser" component={NewUser}></Route>
           </Switch>
+          <Footer />
         </div>
       </Provider>
     </Router>
