@@ -12,7 +12,7 @@ export function getEstateAction() {
       //console.log(response.data.results)
       dispatch(downloadEstateSuccess(response.data.results))
     } catch (error) {
-      dispatch(DownloadEstateError())
+      dispatch(DownloadEstateError(true))
     }
   }
 }

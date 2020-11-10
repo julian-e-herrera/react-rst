@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ButtonStyled from '../../styled/button'
 import LoginStyled from './login-styled'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { searchUser } from '../../actions/loginAction'
 
 const Login = () => {
@@ -18,6 +17,14 @@ const Login = () => {
 
   ///crea una funcion al utilizar use dispatch
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    const loaduser = () => dispatch(searchUser(userI))
+    loaduser()
+  }, [])
+
+  const userLog = useSelector((state) => state.login.user)
+  console.log(userLog)
 
   ////acceder store del state
   const loading = useSelector((state) => state.login.loading)

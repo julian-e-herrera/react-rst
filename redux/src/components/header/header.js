@@ -5,11 +5,10 @@ import ButtonStyled from '../../styled/button'
 import Modal from '../modal'
 import NewUser from '../newUser/newUser'
 import Login from '../login/login'
-import Home from '../home'
+
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
   const [showLoginModal, setLoginModal] = useState(null)
-
   const handleClose = () => {
     console.log('estaria entrando')
     setShowModal(false)

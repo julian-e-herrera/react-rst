@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         login: true,
-        // users: [...state.users, action.payload],
+        user: action.payload,
       }
     case LOGIN_USER_ERROR:
       return {

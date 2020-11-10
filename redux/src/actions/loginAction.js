@@ -2,6 +2,7 @@ import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from '../types'
 import { clientAxios } from '../config/axios.js'
 import Swal from 'sweetalert2'
 import jwt from 'jsonwebtoken'
+import { useSelector } from 'react-redux'
 
 export function login(user) {
   //const [jwt,setJwt]=useState(()=> window.sessionStorage.getItem('jwt'))
@@ -17,7 +18,7 @@ export function login(user) {
     { expireIn: '1h' }
   )
 
-  console.log(token)
+  window.sessionStorage.setItem('jwt', token)
 
   return async (dispatch) => {
     dispatch(loginUser())
@@ -44,8 +45,8 @@ export function login(user) {
 export const searchUser = (user) => {
   const { username, password } = user
 
-  console.log(username)
-  console.log(password)
+  // console.log(username)
+  //console.log(password)
 
   return async (dispatch) => {
     dispatch(loginUser())
@@ -55,11 +56,15 @@ export const searchUser = (user) => {
       //me fijo si existe el usuario
       const validUser = users.data.filter((person) => person.username.toLowerCase().includes(username))
       const encontrado = validUser[0]
-      console.log(encontrado.password)
-      // if (encontrado.password.includes(user.password))
-      console.log(password)
-      // dispatch(loginUserSuccess(validUser))
+      //console.log(encontrado.password === user.password)
+      if (encontrado.password === user.password) {
+        //  console.log(encontrado)
+        dispatch(loginUserSuccess(encontrado))
+        //return encontrado
+      }
     } catch (error) {
+      dispatch(loginUserError(true))
+
       console.log(error)
     }
   }
