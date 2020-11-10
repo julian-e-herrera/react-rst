@@ -24,12 +24,14 @@ const Login = () => {
   }, [])
 
   const userLog = useSelector((state) => state.login.user)
+
   console.log(userLog)
 
   ////acceder store del state
   const loading = useSelector((state) => state.login.loading)
   console.log(loading)
   const addUser = (user) => dispatch(searchUser(user))
+
   const handleSubmit = (e) => {
     e.preventDefault()
     addUser(userI)

@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from '../types'
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER } from '../types'
 import { clientAxios } from '../config/axios.js'
 import Swal from 'sweetalert2'
 import jwt from 'jsonwebtoken'
@@ -69,9 +69,20 @@ export const searchUser = (user) => {
     }
   }
 }
+
+export const logout = () => {
+  return (dispatch) => {
+    dispatch(logoutUser(false))
+  }
+}
+
 const loginUser = () => ({
   type: LOGIN_USER,
   payload: true,
+})
+const logoutUser = (fail) => ({
+  type: LOGOUT_USER,
+  payload: fail,
 })
 
 ///si se guarda

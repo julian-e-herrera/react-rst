@@ -1,8 +1,6 @@
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from '../types'
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER } from '../types'
 
 const initialState = {
-  favs: [],
-  token: '',
   auth: null,
   user: null,
   error: false,
@@ -16,18 +14,24 @@ export default function (state = initialState, action) {
         ...state,
         loading: action.payload,
       }
+    case LOGOUT_USER: //check these three
+      return {
+        ...state,
+        auth: action.payload,
+        user: null,
+      }
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
         loading: false,
-        login: true,
+        auth: true,
         user: action.payload,
       }
     case LOGIN_USER_ERROR:
       return {
         ...state,
         loading: false,
-        login: false,
+        auth: false,
         error: action.payload,
       }
     default:

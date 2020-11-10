@@ -1,10 +1,12 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import HeaderStyled, { FormSearch } from './header-styled'
 import { Link } from 'react-router-dom'
 import ButtonStyled from '../../styled/button'
 import Modal from '../modal'
 import NewUser from '../newUser/newUser'
 import Login from '../login/login'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../actions/loginAction'
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
@@ -25,31 +27,49 @@ const Header = () => {
   const handleClickLog = () => {
     setLoginModal(true)
   }
+  const dispatch = useDispatch()
 
+  const auth = useSelector((state) => state.login.auth)
+  useEffect(() => {
+    const lgoutUser = () => dispatch(logout())
+    lgoutUser()
+  }, [])
+
+  const outUser = () => dispatch(logout())
+  const handleLogout = (e) => {
+    e.preventDefault()
+    outUser()
+  }
   return (
     <Fragment>
       <HeaderStyled>
         <h1>
           <Link to={'/'}>Real Estate Test</Link>
         </h1>
-        <ButtonStyled onClick={handleClick}>
-          Sig-in
-          {/* <Link to={'/newUser'}>Register</Link> */}
-        </ButtonStyled>
-        {showModal && (
-          <Modal onClose={handleClose}>
-            <NewUser />
-          </Modal>
-        )}
+        {auth ? (
+          <ButtonStyled onClick={handleLogout}>Logout</ButtonStyled>
+        ) : (
+          <Fragment>
+            <ButtonStyled onClick={handleClick}>
+              Sig-in
+              {/* <Link to={'/newUser'}>Register</Link> */}
+            </ButtonStyled>
+            {showModal && (
+              <Modal onClose={handleClose}>
+                <NewUser />
+              </Modal>
+            )}
 
-        <ButtonStyled onClick={handleClickLog}>
-          {/* <Link to={'/'}>Login</Link> */}
-          Login
-        </ButtonStyled>
-        {showLoginModal && (
-          <Modal onClose={handleCloseLog}>
-            <Login />
-          </Modal>
+            <ButtonStyled onClick={handleClickLog}>
+              {/* <Link to={'/'}>Login</Link> */}
+              Login
+            </ButtonStyled>
+            {showLoginModal && (
+              <Modal onClose={handleCloseLog}>
+                <Login />
+              </Modal>
+            )}
+          </Fragment>
         )}
       </HeaderStyled>
       <div className="box-search">
