@@ -10,13 +10,13 @@ const NewUser = () => {
   const { history } = useHistory()
   ///state del compnente
   const [user, setUser] = useState({
-    name: '',
-    pass: '',
+    username: '',
+    password: '',
     confirmPass: '',
     favs: [],
   })
 
-  const { name, password, confirmPass } = user
+  const { username, password, confirmPass } = user
   const error = useSelector((state) => state.users.error)
 
   const handleInputChange = (event) => {
@@ -35,7 +35,7 @@ const NewUser = () => {
 
     addUser(user)
     //redirect home
-    history.push('/') //no estaria andando
+    //history.push('/') //no estaria andando
   }
 
   return (
@@ -47,8 +47,8 @@ const NewUser = () => {
         <input
           type="text"
           id="user"
-          name="name"
-          value={name}
+          name="username"
+          value={username}
           placeholder=" name"
           onChange={handleInputChange}
           required
@@ -57,9 +57,9 @@ const NewUser = () => {
         <input
           type="password"
           id="password"
-          name="pass"
+          name="password"
           value={password}
-          placeholder="passsword"
+          placeholder="password"
           onChange={handleInputChange}
           required
         />

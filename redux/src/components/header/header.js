@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import ButtonStyled from '../../styled/button'
 import Modal from '../modal'
 import NewUser from '../newUser/newUser'
+import Login from '../login/login'
+import Home from '../home'
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
+  const [showLoginModal, setLoginModal] = useState(null)
 
   const handleClose = () => {
     console.log('estaria entrando')
@@ -14,6 +17,14 @@ const Header = () => {
 
   const handleClick = () => {
     setShowModal(true)
+  }
+  const handleCloseLog = () => {
+    console.log('estaria entrando')
+    setLoginModal(false)
+  }
+
+  const handleClickLog = () => {
+    setLoginModal(true)
   }
 
   return (
@@ -32,10 +43,16 @@ const Header = () => {
           </Modal>
         )}
 
-        <ButtonStyled>
-          <Link to={'/'}>Login</Link>
+        <ButtonStyled onClick={handleClickLog}>
+          {/* <Link to={'/'}>Login</Link> */}
+          Login
         </ButtonStyled>
-      </HeaderStyled>{' '}
+        {showLoginModal && (
+          <Modal onClose={handleCloseLog}>
+            <Login />
+          </Modal>
+        )}
+      </HeaderStyled>
       <div className="box-search">
         <FormSearch>
           <input type="text" name="text" id="input_value" placeholder="Please enter value"></input>

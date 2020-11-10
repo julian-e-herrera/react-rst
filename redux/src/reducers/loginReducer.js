@@ -1,31 +1,35 @@
-import { ADD_FAV, ADD_USER, ADD_USER_SUCCESS, ADD_USER_ERROR } from '../types'
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR } from '../types'
 
 const initialState = {
-  users: [],
+  favs: [],
+  token: '',
+  auth: null,
+  user: null,
   error: false,
   loading: false,
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case ADD_USER:
+    case LOGIN_USER: //check these three
       return {
         ...state,
         loading: action.payload,
       }
-    case ADD_USER_SUCCESS:
+    case LOGIN_USER_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: [...state.users, action.payload],
+        login: true,
+        // users: [...state.users, action.payload],
       }
-    case ADD_USER_ERROR:
+    case LOGIN_USER_ERROR:
       return {
         ...state,
         loading: false,
+        login: false,
         error: action.payload,
       }
-
     default:
       return state
   }
