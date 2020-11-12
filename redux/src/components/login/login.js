@@ -25,12 +25,14 @@ const Login = () => {
 
   const userLog = useSelector((state) => state.login.user)
 
-  console.log(userLog)
+  //console.log(userLog)
 
   ////acceder store del state
   const loading = useSelector((state) => state.login.loading)
   console.log(loading)
   const addUser = (user) => dispatch(searchUser(user))
+  //FALTA MARCAR ERROR CUANDO EL LOGUEO ES ERRONEO,RECORDAR AGREGAR BOTON PARA
+  //VER FAVS PENSAR SI CREAR UN CARRUSEL BUEVO O UNA ESTRUCTURA NUEVA
 
   const handleSubmit = (e) => {
     e.preventDefault()

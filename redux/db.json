@@ -40,6 +40,34 @@
       "confirmPass": "roberto",
       "favs": [],
       "id": 65
+    },
+    {
+      "username": "omar",
+      "password": "vicente",
+      "confirmPass": "herrera",
+      "favs": [],
+      "id": 66
+    },
+    {
+      "username": "carlos",
+      "password": "carlos",
+      "confirmPass": "carlos",
+      "favs": [],
+      "id": 67
+    },
+    {
+      "username": "jjuan manuel ",
+      "password": "nuanma",
+      "confirmPass": "juanma",
+      "favs": [],
+      "id": 68
+    },
+    {
+      "username": "aaaaa",
+      "password": "sssssss",
+      "confirmPass": "ssssss",
+      "favs": [],
+      "id": 69
     }
   ]
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Card, Text } from './property-style'
+import Fav from '../fav'
 
 export const Property = (props) => {
   const item = props
@@ -38,6 +39,7 @@ export const Property = (props) => {
             officiis sapiente amet quod vero est vel.
           </p>
         </Text>
+        <Fav id={item.id} />
       </Container>
     </div>
   )

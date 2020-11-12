@@ -1,5 +1,14 @@
-import { INIT_DOWN_ESTATE, GET_ESTATE_SUCCESS, DOWN_ESTATE_ERROR } from '../types'
-import { estateAxios } from '../config/axios'
+import {
+  INIT_DOWN_ESTATE,
+  GET_ESTATE_SUCCESS,
+  DOWN_ESTATE_ERROR,
+  ADD_FAV,
+  SELECTED_FAV,
+  DELETE_FAV,
+  GET_FAVS,
+  GET_FAVS_SUCCESS,
+} from '../types'
+import { estateAxios, clientAxios } from '../config/axios'
 import Swal from 'sweetalert2'
 //crearuser
 
@@ -31,4 +40,66 @@ const downloadEstateSuccess = (estate) => ({
 const DownloadEstateError = (fail) => ({
   type: DOWN_ESTATE_ERROR,
   payload: fail,
+})
+
+///favrites*/////////////////*////
+export function addFav(id) {
+  return (dispatch) => {
+    dispatch(isertFav(id))
+  }
+}
+
+const isertFav = (id) => ({
+  type: ADD_FAV,
+  payload: id,
+})
+
+export function selectFav(id) {
+  return async (dispatch) => {
+    dispatch(selFav(id))
+    console.log(id)
+  }
+}
+
+const selFav = (id) => ({
+  type: SELECTED_FAV,
+  payload: id,
+})
+
+export function deleteFav(id) {
+  return async (dispatch) => {
+    dispatch(selFav(id))
+    console.log(id)
+  }
+}
+
+const popFav = (id) => ({
+  type: DELETE_FAV,
+  payload: id,
+})
+
+export function getFavAction() {
+  return async (dispatch) => {
+    dispatch(downloadFav())
+    try {
+      const users = await clientAxios.get(`/users`)
+      console.log(users.data)
+      //me fijo si existe el usuario
+      const listFav = users.data.favs
+      dispatch(favsUser(listFav))
+    } catch (error) {
+      //action de error
+
+      console.log(error)
+    }
+  }
+}
+
+const downloadFav = () => ({
+  type: GET_FAVS,
+  payload: true,
+})
+const favsUser = (favs) => ({
+  type: GET_FAVS_SUCCESS,
+  payload: favs,
 })

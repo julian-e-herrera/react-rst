@@ -1,52 +1,11 @@
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER } from '../types'
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER, ADD_FAV } from '../types'
 import { clientAxios } from '../config/axios.js'
 import Swal from 'sweetalert2'
 import jwt from 'jsonwebtoken'
 import { useSelector } from 'react-redux'
 
-export function login(user) {
-  //const [jwt,setJwt]=useState(()=> window.sessionStorage.getItem('jwt'))
-  const { username, password } = user
-  const token = jwt.sign(
-    {
-      //id: user.id, //aca va el id del ususario q se loguea
-      username: username, //
-      password: password,
-      //favs: user.favs,
-    },
-    process.env.SECRETWORD,
-    { expireIn: '1h' }
-  )
-
-  window.sessionStorage.setItem('jwt', token)
-
-  return async (dispatch) => {
-    dispatch(loginUser())
-
-    try {
-      //get from api
-      const validUser = await clientAxios.get(`users/${user.id}`)
-      //if success, update state
-      dispatch(loginUserSuccess(user))
-      //alert
-      Swal.fire('Success', 'User loging was succesfully', 'success')
-    } catch (error) {
-      console.log(error)
-      dispatch(loginUserError(true))
-      Swal.fire({
-        icon: 'error',
-        title: 'Error login',
-        text: 'Was an error,try again',
-      })
-    }
-  }
-}
-////////////////////////////////////////////////
 export const searchUser = (user) => {
   const { username, password } = user
-
-  // console.log(username)
-  //console.log(password)
 
   return async (dispatch) => {
     dispatch(loginUser())
@@ -56,14 +15,21 @@ export const searchUser = (user) => {
       //me fijo si existe el usuario
       const validUser = users.data.filter((person) => person.username.toLowerCase().includes(username))
       const encontrado = validUser[0]
-      //console.log(encontrado.password === user.password)
-      if (encontrado.password === user.password) {
+      if (!encontrado) {
+        failLog()
+      } else if (encontrado.password === password) {
         //  console.log(encontrado)
         dispatch(loginUserSuccess(encontrado))
-        //return encontrado
+        Swal.fire('Success', 'User loging was succesfully', 'success')
       }
     } catch (error) {
       dispatch(loginUserError(true))
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error login',
+        text: 'Username or password are wrong,please try again',
+      })
 
       console.log(error)
     }
@@ -95,3 +61,10 @@ const loginUserError = (fail) => ({
   type: LOGIN_USER_ERROR,
   payload: fail,
 })
+const failLog = () => {
+  Swal.fire({
+    icon: 'error',
+    title: 'Error login',
+    text: 'Username or password are wrong,please try again',
+  })
+}

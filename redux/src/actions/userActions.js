@@ -25,6 +25,22 @@ export function createUser(user) {
   }
 }
 
+export const setFav = (fav) => {
+  return async (dispatch) => {
+    dispatch(addFav())
+    try {
+      // dispatch(addUserSuccess())
+      //alert
+      Swal.fire('Success', 'User loging was succesfully', 'success')
+    } catch (error) {}
+  }
+}
+
+const addFav = (fav) => ({
+  type: ADD_FAV,
+  payload: fav,
+})
+
 const addUser = () => ({
   type: ADD_USER,
   payload: true,

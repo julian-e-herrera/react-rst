@@ -8,6 +8,10 @@ export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR'
 
 export const ADD_FAV = 'ADD_FAV'
+export const GET_FAVS = 'GET_FAVS'
+export const GET_FAVS_SUCCESS = 'GET_FAVS_SUCCESS'
+export const SELECTED_FAV = 'SELECTED_FAV'
+export const DELETE_FAV = 'DELETE_FAV'
 
 export const INIT_DOWN_ESTATE = 'INIT_DOWN_ESTATE'
 export const GET_ESTATE_SUCCESS = 'GET_ESTATE_SUCCESS'

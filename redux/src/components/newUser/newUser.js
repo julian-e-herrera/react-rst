@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ButtonStyled from '../../styled/button'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 
 import NewUserLogin from './newUser-styled'
 //actionredx
 import { createUser } from '../../actions/userActions'
+import { searchUser } from '../../actions/loginAction'
 const NewUser = () => {
-  const { history } = useHistory()
   ///state del compnente
   const [user, setUser] = useState({
     username: '',
@@ -27,13 +26,25 @@ const NewUser = () => {
 
   ////acceder store del state
   const loading = useSelector((state) => state.users.loading)
+
   console.log(loading)
   const addUser = (user) => dispatch(createUser(user))
+
+  useEffect(() => {
+    const loaduser = () => dispatch(searchUser(user))
+    loaduser()
+  }, [])
+
+  const getUser = (user) => dispatch(searchUser(user))
+
   const submitNewUser = (e) => {
     e.preventDefault()
     // //validar form
-
-    addUser(user)
+    if (user.password === user.confirmPass) {
+      addUser(user)
+      getUser(user)
+    }
+    console.log('erroooooooooooooor')
     //redirect home
     //history.push('/') //no estaria andando
   }

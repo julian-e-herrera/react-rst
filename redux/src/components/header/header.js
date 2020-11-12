@@ -30,6 +30,8 @@ const Header = () => {
   const dispatch = useDispatch()
 
   const auth = useSelector((state) => state.login.auth)
+  const authUser = useSelector((state) => state.login.user)
+
   useEffect(() => {
     const lgoutUser = () => dispatch(logout())
     lgoutUser()
@@ -47,7 +49,10 @@ const Header = () => {
           <Link to={'/'}>Real Estate Test</Link>
         </h1>
         {auth ? (
-          <ButtonStyled onClick={handleLogout}>Logout</ButtonStyled>
+          <Fragment>
+            <ButtonStyled onClick={handleLogout}>Logout</ButtonStyled>
+            <ButtonStyled onClick={handleLogout}>{authUser.username}</ButtonStyled>
+          </Fragment>
         ) : (
           <Fragment>
             <ButtonStyled onClick={handleClick}>
