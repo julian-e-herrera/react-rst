@@ -7,10 +7,12 @@ import NewUser from '../newUser/newUser'
 import Login from '../login/login'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../actions/loginAction'
+// import { addFav } from '../../actions/estateActions'
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
   const [showLoginModal, setLoginModal] = useState(null)
+
   const handleClose = () => {
     console.log('estaria entrando')
     setShowModal(false)
@@ -31,9 +33,15 @@ const Header = () => {
 
   const auth = useSelector((state) => state.login.auth)
   const authUser = useSelector((state) => state.login.user)
+  // const { favs } = auth ? authUser : []
+  // ///console.log(favs)
 
+  // const addingFav = (list) => {
+  //   list.map((id) => dispatch(addFav(id)))
+  // }
+
+  const lgoutUser = () => dispatch(logout())
   useEffect(() => {
-    const lgoutUser = () => dispatch(logout())
     lgoutUser()
   }, [])
 

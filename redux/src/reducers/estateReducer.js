@@ -61,7 +61,7 @@ export default function (state = initialState, action) {
     case GET_FAVS_SUCCESS:
       return {
         ...state,
-        favs: [...state.favs, action.payload],
+        favs: action.payload,
       }
 
     default:

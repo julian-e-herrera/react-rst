@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import Properties from './properties'
-
 const Home = () => {
   return (
     <Fragment>

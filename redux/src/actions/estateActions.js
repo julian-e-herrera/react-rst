@@ -10,6 +10,8 @@ import {
 } from '../types'
 import { estateAxios, clientAxios } from '../config/axios'
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
+import { StaticRouter } from 'react-router-dom'
 //crearuser
 
 export function getEstateAction() {
@@ -66,10 +68,16 @@ const selFav = (id) => ({
   payload: id,
 })
 
-export function deleteFav(id) {
+export function deleteFav(user) {
+  //en realidad es update
   return async (dispatch) => {
-    dispatch(selFav(id))
-    console.log(id)
+    dispatch(selFav(user))
+    try {
+      const resultado = clientAxios.put(`/users/${user.id}`, user)
+      console.log(resultado)
+    } catch (error) {}
+
+    console.log(user)
   }
 }
 
@@ -78,14 +86,13 @@ const popFav = (id) => ({
   payload: id,
 })
 
-export function getFavAction() {
+export function getFavAction(user) {
   return async (dispatch) => {
     dispatch(downloadFav())
     try {
-      const users = await clientAxios.get(`/users`)
-      console.log(users.data)
-      //me fijo si existe el usuario
+      const users = await clientAxios.get(`/users/${user.id}`)
       const listFav = users.data.favs
+      //console.log(listFav)
       dispatch(favsUser(listFav))
     } catch (error) {
       //action de error

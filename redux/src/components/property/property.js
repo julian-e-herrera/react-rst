@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Card, Text } from './property-style'
+import { useSelector } from 'react-redux'
 import Fav from '../fav'
 
 export const Property = (props) => {
@@ -14,6 +15,9 @@ export const Property = (props) => {
   const handleClose = () => {
     return setShowModalCard(false)
   }
+
+  const user = useSelector((state) => state.login.user)
+  //console.log(user)
 
   return (
     <div>

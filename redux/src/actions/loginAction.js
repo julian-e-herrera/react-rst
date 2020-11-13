@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 
 export const searchUser = (user) => {
   const { username, password } = user
-
   return async (dispatch) => {
     dispatch(loginUser())
     try {

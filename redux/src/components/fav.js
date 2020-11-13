@@ -1,43 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteFav, addFav, getFavAction } from '../actions/estateActions'
+import Modal from '../components/modal'
+import Login from '../components/login/login'
+
 export default function Fav({ id }) {
-  // let favsInitial = JSON.parse(localStorage.getItem('favs'))
-  // if (!favsInitial) {
-  //   favsInitial = []
-  // }
+  const auth = useSelector((state) => state.login.auth)
+  const authUser = useSelector((state) => state.login.user)
   const islog = useSelector((state) => state.login.auth)
-  console.log(islog)
+  const { favs } = auth ? authUser : []
+
+  const [showLoginModal, setLoginModal] = useState(null)
+
+  const handleClose = () => {
+    setLoginModal(false)
+  }
 
   const dispatch = useDispatch()
+  const loadEstate = () => dispatch(getFavAction(authUser))
   useEffect(() => {
-    const loadEstate = () => dispatch(getFavAction())
-    loadEstate()
-  }, [])
+    changefav()
+    auth && loadEstate()
+  }, [favs])
 
-  const elimiad = (id) => {
+  const clean = (id) => {
     dispatch(deleteFav(id))
   }
-  const { favs } = useSelector((state) => state.estate.favs)
-  console.log(favs)
-  //const [isFav] = favs.includes((favId) => favId === id) //busc en favs
-  const [isFavorite, setFavorite] = useState(false)
 
+  const [isFavorite, setFavorite] = useState(auth && favs.includes(id))
+  //console.log(isFavorite)
   const handleClick = (e) => {
     e.preventDefault()
     //si no esta logeado q vaya al login
+    !auth ? setLoginModal(true) : changefav()
+  }
+  const addingFav = (id) => {
+    dispatch(addFav(id))
+  }
 
-    //elimiad(id)
-    islog ? elimiad(id) : addingFav(id)
+  const changefav = () => {
+    handleClose()
     setFavorite(!isFavorite)
     if (isFavorite) {
       addingFav(id)
     } else {
       deleteFav(id)
     }
-  }
-  const addingFav = (id) => {
-    dispatch(addFav(id))
   }
 
   // const deleteFav = (id) => {
@@ -60,6 +68,11 @@ export default function Fav({ id }) {
           {emoji}
         </span>
       </button>
+      {showLoginModal && (
+        <Modal onClose={handleClose}>
+          <Login />
+        </Modal>
+      )}
     </>
   )
 }
