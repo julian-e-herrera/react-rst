@@ -7,7 +7,6 @@ import Login from '../components/login/login'
 export default function Fav({ id }) {
   const auth = useSelector((state) => state.login.auth)
   const authUser = useSelector((state) => state.login.user)
-  const islog = useSelector((state) => state.login.auth)
   const { favs } = auth ? authUser : []
 
   const [showLoginModal, setLoginModal] = useState(null)
@@ -15,19 +14,22 @@ export default function Fav({ id }) {
   const handleClose = () => {
     setLoginModal(false)
   }
-
+  const [isFavorite, setFavorite] = useState(auth && favs.includes(id))
   const dispatch = useDispatch()
   const loadEstate = () => dispatch(getFavAction(authUser))
+  const updateFavs = () => {
+    favs.some((fav) => fav === id) && setFavorite(true)
+  }
+
   useEffect(() => {
-    changefav()
     auth && loadEstate()
+    auth && updateFavs()
   }, [favs])
 
   const clean = (id) => {
     dispatch(deleteFav(id))
   }
 
-  const [isFavorite, setFavorite] = useState(auth && favs.includes(id))
   //console.log(isFavorite)
   const handleClick = (e) => {
     e.preventDefault()

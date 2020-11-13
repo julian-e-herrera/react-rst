@@ -1,8 +1,6 @@
 import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER, ADD_FAV } from '../types'
 import { clientAxios } from '../config/axios.js'
 import Swal from 'sweetalert2'
-import jwt from 'jsonwebtoken'
-import { useSelector } from 'react-redux'
 
 export const searchUser = (user) => {
   const { username, password } = user

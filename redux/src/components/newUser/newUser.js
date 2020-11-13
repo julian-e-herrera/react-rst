@@ -45,8 +45,6 @@ const NewUser = () => {
       getUser(user)
     }
     console.log('erroooooooooooooor')
-    //redirect home
-    //history.push('/') //no estaria andando
   }
 
   return (

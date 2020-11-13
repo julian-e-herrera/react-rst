@@ -21,7 +21,6 @@ const Properties = () => {
   }, [])
 
   const estate = useSelector((state) => state.estate.estate)
-  //console.log(estate)
   return (
     <Fragment>
       {estate.lenght === 0 ? (
@@ -33,7 +32,7 @@ const Properties = () => {
           ))}
         </Carousel>
       )}
-      {/* <h1>propertye</h1>deberia agragar aqui  el carusel sele */}
+      {/* <h1>propertye</h1>deberia agragar aqui  el carusel con los favs */}
     </Fragment>
   )
 }

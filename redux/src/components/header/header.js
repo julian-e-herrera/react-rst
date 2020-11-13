@@ -7,14 +7,12 @@ import NewUser from '../newUser/newUser'
 import Login from '../login/login'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../actions/loginAction'
-// import { addFav } from '../../actions/estateActions'
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
   const [showLoginModal, setLoginModal] = useState(null)
 
   const handleClose = () => {
-    console.log('estaria entrando')
     setShowModal(false)
   }
 
@@ -22,7 +20,6 @@ const Header = () => {
     setShowModal(true)
   }
   const handleCloseLog = () => {
-    console.log('estaria entrando')
     setLoginModal(false)
   }
 
@@ -33,12 +30,6 @@ const Header = () => {
 
   const auth = useSelector((state) => state.login.auth)
   const authUser = useSelector((state) => state.login.user)
-  // const { favs } = auth ? authUser : []
-  // ///console.log(favs)
-
-  // const addingFav = (list) => {
-  //   list.map((id) => dispatch(addFav(id)))
-  // }
 
   const lgoutUser = () => dispatch(logout())
   useEffect(() => {
@@ -63,20 +54,14 @@ const Header = () => {
           </Fragment>
         ) : (
           <Fragment>
-            <ButtonStyled onClick={handleClick}>
-              Sig-in
-              {/* <Link to={'/newUser'}>Register</Link> */}
-            </ButtonStyled>
+            <ButtonStyled onClick={handleClick}>Sig-in</ButtonStyled>
             {showModal && (
               <Modal onClose={handleClose}>
                 <NewUser />
               </Modal>
             )}
 
-            <ButtonStyled onClick={handleClickLog}>
-              {/* <Link to={'/'}>Login</Link> */}
-              Login
-            </ButtonStyled>
+            <ButtonStyled onClick={handleClickLog}>Login</ButtonStyled>
             {showLoginModal && (
               <Modal onClose={handleCloseLog}>
                 <Login />

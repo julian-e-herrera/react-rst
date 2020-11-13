@@ -9,10 +9,6 @@ import {
   GET_FAVS_SUCCESS,
 } from '../types'
 import { estateAxios, clientAxios } from '../config/axios'
-import Swal from 'sweetalert2'
-import { useSelector } from 'react-redux'
-import { StaticRouter } from 'react-router-dom'
-//crearuser
 
 export function getEstateAction() {
   return async (dispatch) => {
