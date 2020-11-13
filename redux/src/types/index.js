@@ -1,0 +1,18 @@
+export const ADD_USER = 'ADD_USER'
+export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS'
+export const ADD_USER_ERROR = 'ADD_USER_ERROR'
+
+export const LOGIN_USER = 'LOGIN_USER'
+export const LOGOUT_USER = 'LOGOUT_USER'
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
+export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR'
+
+export const ADD_FAV = 'ADD_FAV'
+export const GET_FAVS = 'GET_FAVS'
+export const GET_FAVS_SUCCESS = 'GET_FAVS_SUCCESS'
+export const SELECTED_FAV = 'SELECTED_FAV'
+export const DELETE_FAV = 'DELETE_FAV'
+
+export const INIT_DOWN_ESTATE = 'INIT_DOWN_ESTATE'
+export const GET_ESTATE_SUCCESS = 'GET_ESTATE_SUCCESS'
+export const DOWN_ESTATE_ERROR = 'DOWN_ESTATE_ERROR'

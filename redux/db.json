@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "julian",
+      "password": "admin",
+      "favs": [
+        "XS3q-m3aGEM",
+        "Rww63pSEAkk",
+        "548KRAe7_L0"
+      ]
+    },
+    {
+      "username": "usuario",
+      "password": "noadmin",
+      "id": 37,
+      "favs": [
+        "XS3q-m3aGEM",
+        "Rww63pSEAkk",
+        "548KRAe7_L0"
+      ]
+    },
+    {
+      "username": "alberto",
+      "password": "1234",
+      "favs": [],
+      "id": 38
+    },
+    {
+      "username": "jose",
+      "password": "ulttimo",
+      "confirmPass": "ultimo",
+      "favs": [],
+      "name": "d",
+      "id": 64
+    },
+    {
+      "username": "roberto",
+      "password": "roberto",
+      "confirmPass": "roberto",
+      "favs": [],
+      "id": 65
+    },
+    {
+      "username": "omar",
+      "password": "vicente",
+      "confirmPass": "herrera",
+      "favs": [],
+      "id": 66
+    },
+    {
+      "username": "carlos",
+      "password": "carlos",
+      "confirmPass": "carlos",
+      "favs": [],
+      "id": 67
+    },
+    {
+      "username": "jjuan manuel ",
+      "password": "nuanma",
+      "confirmPass": "juanma",
+      "favs": [],
+      "id": 68
+    },
+    {
+      "username": "aaaaa",
+      "password": "sssssss",
+      "confirmPass": "ssssss",
+      "favs": [],
+      "id": 69
+    }
+  ]
+}

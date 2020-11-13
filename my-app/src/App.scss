@@ -1,0 +1,129 @@
+$base-color: #f8f8f8;
+$theme-second: Avenir;
+$theme-first: 'Montserrat', serif;
+$theme-span: Verdana, Geneva, Tahoma, sans-serif;
+
+.App {
+  text-align: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  position: relative;
+  margin: auto;
+  margin-top: 5%;
+  min-height: 50vh;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  visibility: hidden;
+}
+
+.overlay.active {
+  visibility: visible;
+}
+.popup.popup,
+.modal-content {
+  background: $base-color;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  font-family: $theme-first;
+  padding: 20px;
+  text-align: center;
+  width: 600px;
+  transition: 0.3s ease all;
+  transform: scale(1);
+  border-radius: 8px;
+  color: black;
+  position: 'absolute';
+  top: 50%;
+  left: 50%;
+  transform: 'translate(-50%, -50%)';
+}
+
+select,
+input {
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  margin-left: auto;
+  text-decoration-thickness: initial;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.img {
+  width: 40%;
+}
+
+.title:hover {
+  transform: scale(1.1);
+}
+@media screen and (max-width: 1200px) {
+  .container-text {
+    width: 90%;
+    height: 70%;
+    padding: 80px;
+  }
+  .pp {
+    max-height: 800px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .pp {
+    flex-direction: column;
+    height: 100%;
+    max-height: 800px;
+  }
+
+  .img {
+    width: 100%;
+    height: 40%;
+  }
+
+  .container-text {
+    width: 90%;
+    height: 70%;
+    padding: 80px;
+  }
+  #popup.popup {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container-text {
+    padding: 20px;
+  }
+
+  .container-text h1 {
+    font-size: 20px;
+  }
+
+  .container-text p {
+    font-size: 12px;
+  }
+  div.img {
+    width: 100%;
+  }
+  #popup.popup {
+    width: 70%;
+  }
+}

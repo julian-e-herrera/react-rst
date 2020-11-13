@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "julian",
+      "pass": "admin",
+      "favs": []
+    },
+    {
+      "name": "usuario",
+      "pass": "noadmin",
+      "id": 37
+    },
+    {
+      "name": "alberto",
+      "pass": "1234",
+      "favs": [],
+      "id": 38
+    },
+    {
+      "name": "",
+      "pass": "",
+      "favs": [],
+      "id": 39
+    },
+    {
+      "id": 40
+    },
+    {
+      "id": 41
+    },
+    {
+      "id": 42
+    }
+  ]
+}
