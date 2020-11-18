@@ -5,10 +5,12 @@ import {
   ADD_FAV,
   SELECTED_FAV,
   DELETE_FAV,
+  UPDATE_FAV,
   GET_FAVS,
   GET_FAVS_SUCCESS,
 } from '../types'
 import { estateAxios, clientAxios } from '../config/axios'
+import { useSelector } from 'react-redux'
 
 export function getEstateAction() {
   return async (dispatch) => {
@@ -53,6 +55,7 @@ const isertFav = (id) => ({
 })
 
 export function selectFav(id) {
+  ////////////////////////////////////////////
   return async (dispatch) => {
     dispatch(selFav(id))
     console.log(id)
@@ -76,13 +79,39 @@ export function deleteFav(user) {
     console.log(user)
   }
 }
+export function dileteFav(id) {
+  return async (dispatch) => {
+    dispatch(delFav(id))
+    console.log('entro al action de borrar')
+  }
+}
 
-const popFav = (id) => ({
+export function setUpdateFav(id, user) {
+  return async (dispatch) => {
+    dispatch(updatedFav(user))
+    try {
+      const resultado = clientAxios.put(`/users/${id}`, user)
+      console.log(resultado.body)
+      /// dispatch(addFav(user))
+    } catch (error) {}
+    //dispatch(favsUser(true))
+    console.log(user)
+    console.log(' sin nombre setUpdate')
+  }
+}
+
+const updatedFav = (user) => ({
+  type: UPDATE_FAV,
+  payload: user,
+})
+
+const delFav = (id) => ({
   type: DELETE_FAV,
   payload: id,
 })
 
 export function getFavAction(user) {
+  //const userLog= useSelector(state=> state.login.user) esto deberia traer el user logueado
   return async (dispatch) => {
     dispatch(downloadFav())
     try {

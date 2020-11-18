@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteFav, addFav, getFavAction } from '../actions/estateActions'
+import { selectFav, addFav, getFavAction, dileteFav } from '../actions/estateActions'
 import Modal from '../components/modal'
 import Login from '../components/login/login'
 
@@ -8,31 +8,43 @@ export default function Fav({ id }) {
   const auth = useSelector((state) => state.login.auth)
   const authUser = useSelector((state) => state.login.user)
   const { favs } = auth ? authUser : []
-
+  const [isFavorite, setFavorite] = useState(auth && favs.includes(id))
   const [showLoginModal, setLoginModal] = useState(null)
+  const [label, emoji] = isFavorite ? ['Add to favorites', '💜'] : ['Remove from favorites', '🤍']
+  const dispatch = useDispatch()
+
+  const loadEstate = () => dispatch(getFavAction(authUser))
+
+  const cambiarfav = (id) => {
+    ///va a l onclick
+    dispatch(selectFav(id))
+  }
 
   const handleClose = () => {
     setLoginModal(false)
   }
-  const [isFavorite, setFavorite] = useState(auth && favs.includes(id))
-  const dispatch = useDispatch()
-  const loadEstate = () => dispatch(getFavAction(authUser))
-  const updateFavs = () => {
-    favs.some((fav) => fav === id) && setFavorite(true)
-  }
+  console.log(isFavorite)
 
+  const updateFavs = () => {
+    //favs.includes((ide) => ide === id) && setFavorite(true)
+  }
+  const showF = () => {
+    if (auth) setFavorite(favs.includes(id))
+  }
   useEffect(() => {
     auth && loadEstate()
     auth && updateFavs()
+    showF()
   }, [favs])
 
   const clean = (id) => {
-    dispatch(deleteFav(id))
+    dispatch(dileteFav(id))
   }
 
   //console.log(isFavorite)
   const handleClick = (e) => {
     e.preventDefault()
+    cambiarfav(id)
     //si no esta logeado q vaya al login
     !auth ? setLoginModal(true) : changefav()
   }
@@ -42,26 +54,21 @@ export default function Fav({ id }) {
 
   const changefav = () => {
     handleClose()
-    setFavorite(!isFavorite)
     if (isFavorite) {
-      addingFav(id)
+      clean(id)
     } else {
-      deleteFav(id)
+      addingFav(id)
     }
+    setFavorite(!isFavorite)
   }
 
-  // const deleteFav = (id) => {
-  //   const updateFavs = favs.filter((fav) => fav !== id)
-  //   setFavs(updateFavs)
-  // }
-
   const stile = {
+    //move this to styled components
     display: 'contents',
     background: ' white',
     color: 'purple',
     transitionScale: '0.9',
   }
-  const [label, emoji] = isFavorite ? ['Add to favorites', '💜'] : ['Remove from favorites', '➖']
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Card, Text } from './property-style'
-import Fav from '../fav'
+import Fav from '../favs'
 import Modal from '../modal'
 
 export const Property = (props) => {
