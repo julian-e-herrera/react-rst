@@ -5,6 +5,7 @@ import {
   ADD_FAV,
   SELECTED_FAV,
   DELETE_FAV,
+  // UPDATE_FAV,
   GET_FAVS,
   GET_FAVS_SUCCESS,
 } from '../types'
@@ -63,7 +64,11 @@ export default function (state = initialState, action) {
         ...state,
         favs: action.payload,
       }
-
+    // case UPDATE_FAV: //eliminar esto sin uso
+    //   return {
+    //     ...state,
+    //     favs: action.payload,
+    //   }
     default:
       return state
   }

@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER, ADD_FAV } from '../types'
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER, UPDATE_FAV } from '../types'
 import { clientAxios } from '../config/axios.js'
 import Swal from 'sweetalert2'
 
@@ -65,3 +65,23 @@ const failLog = () => {
     text: 'Username or password are wrong,please try again',
   })
 }
+///////////////FAVS
+export function setUpdateFav(id, user) {
+  //update el usuario
+  return async (dispatch) => {
+    dispatch(updatedFav(user))
+    try {
+      const resultado = await clientAxios.put(`/users/${id}`, user)
+      console.log(resultado)
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(user)
+    console.log(' entro setUpdate')
+  }
+}
+
+const updatedFav = (user) => ({
+  type: UPDATE_FAV,
+  payload: user,
+})

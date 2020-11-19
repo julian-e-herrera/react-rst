@@ -12,6 +12,7 @@ export const GET_FAVS = 'GET_FAVS'
 export const GET_FAVS_SUCCESS = 'GET_FAVS_SUCCESS'
 export const SELECTED_FAV = 'SELECTED_FAV'
 export const DELETE_FAV = 'DELETE_FAV'
+export const UPDATE_FAV = 'UPDATE_FAV'
 
 export const INIT_DOWN_ESTATE = 'INIT_DOWN_ESTATE'
 export const GET_ESTATE_SUCCESS = 'GET_ESTATE_SUCCESS'
