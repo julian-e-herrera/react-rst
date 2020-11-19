@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER } from '../types'
+import { LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_ERROR, LOGOUT_USER, UPDATE_FAV } from '../types'
 
 const initialState = {
   auth: null,
@@ -33,6 +33,11 @@ export default function (state = initialState, action) {
         loading: false,
         auth: false,
         error: action.payload,
+      }
+    case UPDATE_FAV:
+      return {
+        ...state,
+        user: action.payload,
       }
 
     default:

@@ -46,6 +46,7 @@ const DownloadEstateError = (fail) => ({
 export function addFav(id) {
   return (dispatch) => {
     dispatch(isertFav(id))
+    console.log('entro al action de agregar')
   }
 }
 
@@ -67,19 +68,19 @@ const selFav = (id) => ({
   payload: id,
 })
 
-export function deleteFav(user) {
-  //en realidad es update
-  return async (dispatch) => {
-    dispatch(selFav(user))
-    try {
-      const resultado = clientAxios.put(`/users/${user.id}`, user)
-      console.log(resultado)
-    } catch (error) {}
+// export function deleteFav(user) {
+//   //en realidad es update
+//   return async (dispatch) => {
+//     dispatch(selFav(user))
+//     try {
+//       const resultado = clientAxios.put(`/users/${user.id}`, user)
+//       console.log(resultado)
+//     } catch (error) {}
 
-    console.log(user)
-  }
-}
-export function dileteFav(id) {
+//     console.log(user)
+//   }
+// }
+export function deleteFav(id) {
   return async (dispatch) => {
     dispatch(delFav(id))
     console.log('entro al action de borrar')
@@ -87,6 +88,7 @@ export function dileteFav(id) {
 }
 
 export function setUpdateFav(id, user) {
+  //update el usuario
   return async (dispatch) => {
     dispatch(updatedFav(user))
     try {
@@ -96,11 +98,12 @@ export function setUpdateFav(id, user) {
     } catch (error) {}
     //dispatch(favsUser(true))
     console.log(user)
-    console.log(' sin nombre setUpdate')
+    console.log(' entro setUpdate')
   }
 }
 
 const updatedFav = (user) => ({
+  /////esta en login
   type: UPDATE_FAV,
   payload: user,
 })
@@ -111,13 +114,12 @@ const delFav = (id) => ({
 })
 
 export function getFavAction(user) {
-  //const userLog= useSelector(state=> state.login.user) esto deberia traer el user logueado
   return async (dispatch) => {
     dispatch(downloadFav())
     try {
       const users = await clientAxios.get(`/users/${user.id}`)
       const listFav = users.data.favs
-      //console.log(listFav)
+      console.log('entro a las listas dl user')
       dispatch(favsUser(listFav))
     } catch (error) {
       //action de error
@@ -126,7 +128,21 @@ export function getFavAction(user) {
     }
   }
 }
+export function getFavAct() {
+  return async (dispatch) => {
+    dispatch(downloadFav())
+    try {
+      const user = useSelector((state) => state.login.user)
+      const listFav = user.favs
+      console.log('entro a las listas dl user')
+      dispatch(favsUser(listFav))
+    } catch (error) {
+      //action de error
 
+      console.log(error)
+    }
+  }
+}
 const downloadFav = () => ({
   type: GET_FAVS,
   payload: true,

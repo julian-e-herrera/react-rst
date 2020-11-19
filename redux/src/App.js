@@ -2,7 +2,7 @@ import './App.css'
 import React from 'react'
 import Header from './components/header/header'
 import Home from './components/home'
-import Favs from './components/favs'
+import Fav from './components/fav'
 import NewUser from './components/newUser/newUser'
 import Footer from './components/footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -17,7 +17,7 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/" component={Home}></Route>
-            <Route exact path="/favs" component={Favs}></Route>
+            <Route exact path="/fav" component={Fav}></Route>
             <Route exact path="/newUser" component={NewUser}></Route>
           </Switch>
           <Footer />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectFav, addFav, getFavAction, dileteFav } from '../actions/estateActions'
+import { selectFav, addFav, getFavAction, deleteFav } from '../actions/estateActions'
+import { setUpdateFav } from '../actions/loginAction'
 import Modal from '../components/modal'
 import Login from '../components/login/login'
 
@@ -11,12 +12,13 @@ export default function Fav({ id }) {
   const [isFavorite, setFavorite] = useState(auth && favs.includes(id))
   const [showLoginModal, setLoginModal] = useState(null)
   const [label, emoji] = isFavorite ? ['Add to favorites', '💜'] : ['Remove from favorites', '🤍']
+
   const dispatch = useDispatch()
 
   const loadEstate = () => dispatch(getFavAction(authUser))
 
   const cambiarfav = (id) => {
-    ///va a l onclick
+    ///va al onclick
     dispatch(selectFav(id))
   }
 
@@ -24,21 +26,38 @@ export default function Fav({ id }) {
     setLoginModal(false)
   }
   console.log(isFavorite)
-
-  const updateFavs = () => {
-    //favs.includes((ide) => ide === id) && setFavorite(true)
+  ////////
+  const estate = useSelector((state) => state.estate.favs)
+  const [userCopy, setCopy] = useState({
+    username: '',
+    password: '',
+    favs: [],
+  })
+  const copy = () => {
+    setCopy({
+      username: authUser.username,
+      password: authUser.password,
+      favs: estate,
+    })
+    console.log(estate)
   }
+  const updateFavs = () => {
+    //dispatch(setUpdateFav(authUser.id, userCopy))
+    console.log(estate)
+  }
+
+  //////////
   const showF = () => {
     if (auth) setFavorite(favs.includes(id))
   }
   useEffect(() => {
     auth && loadEstate()
-    auth && updateFavs()
+    auth && copy()
     showF()
   }, [favs])
 
   const clean = (id) => {
-    dispatch(dileteFav(id))
+    dispatch(deleteFav(id))
   }
 
   //console.log(isFavorite)
@@ -47,6 +66,8 @@ export default function Fav({ id }) {
     cambiarfav(id)
     //si no esta logeado q vaya al login
     !auth ? setLoginModal(true) : changefav()
+    //deberia enviar el update luego de la modificacion
+    auth && updateFavs()
   }
   const addingFav = (id) => {
     dispatch(addFav(id))
@@ -60,6 +81,7 @@ export default function Fav({ id }) {
       addingFav(id)
     }
     setFavorite(!isFavorite)
+    //updateFavs()
   }
 
   const stile = {
