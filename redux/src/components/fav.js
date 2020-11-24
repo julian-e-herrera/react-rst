@@ -18,7 +18,6 @@ export default function Fav({ id }) {
   const loadEstate = () => dispatch(getFavAction(authUser))
 
   const cambiarfav = (id) => {
-    ///va al onclick
     dispatch(selectFav(id))
   }
 

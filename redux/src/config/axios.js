@@ -13,3 +13,5 @@ export const estateAxios = axios.create({
 export const clientAxios = axios.create({
   baseURL: 'http://localhost:4000/',
 })
+
+export default (estateAxios, clientAxios)

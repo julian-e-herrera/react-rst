@@ -18,7 +18,7 @@ export function getEstateAction() {
 
     try {
       const response = await estateAxios.get('search/photos?query=new-york')
-      //console.log(response.data.results)
+      console.log(response)
       dispatch(downloadEstateSuccess(response.data.results))
     } catch (error) {
       dispatch(DownloadEstateError(true))
