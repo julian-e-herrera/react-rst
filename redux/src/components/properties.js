@@ -33,7 +33,7 @@ const Properties = () => {
           ))}
         </Carousel>
       )}
-      {/* <h1>propertye</h1>deberia agragar aqui  el carusel con los favs */}
+      {/* here must be carousel with favs */}
     </Fragment>
   )
 }
