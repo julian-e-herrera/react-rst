@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getEstateAction } from '../actions/estateActions'
 import Carousel from 'react-elastic-carousel'
 import Property from './property/property'
+import Card from '../components/newCard/newCard'
 
 const breakpoint = [
   { width: 500, itemsToShow: 1 },
@@ -28,7 +29,7 @@ const Properties = () => {
       ) : (
         <Carousel breakPoints={breakpoint}>
           {estate.map((ite) => (
-            <Property key={ite.id} {...ite} />
+            <Card key={ite.id} {...ite} />
           ))}
         </Carousel>
       )}

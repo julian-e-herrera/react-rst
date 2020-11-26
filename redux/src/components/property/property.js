@@ -17,7 +17,7 @@ export const Property = (props) => {
   }
 
   return (
-    <div>
+    <div data-testid="property">
       {showModalCard && (
         <Modal onClose={handleClose}>
           <Container>
@@ -40,7 +40,7 @@ export const Property = (props) => {
         </Modal>
       )}
 
-      <Container data-testid="property">
+      <Container>
         {/* <div className="img" style={sti} alt={item.alt_description}></div> */}
         <Card image={image}></Card>
         <Text>

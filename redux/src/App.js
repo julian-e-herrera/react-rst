@@ -4,6 +4,7 @@ import Header from './components/header/header'
 import Home from './components/home'
 import Fav from './components/fav'
 import NewUser from './components/newUser/newUser'
+import Card from './components/newCard/newCard'
 import Footer from './components/footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //redux
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/fav" component={Fav}></Route>
             <Route exact path="/newUser" component={NewUser}></Route>
+            <Route exact path="/newCard" component={Card}></Route>
           </Switch>
           <Footer />
         </div>
