@@ -3,22 +3,14 @@
     {
       "username": "julian",
       "password": "admin",
-      "favs": [
-        "XS3q-m3aGEM",
-        "Rww63pSEAkk",
-        "548KRAe7_L0"
-      ],
+      "favs": ["XS3q-m3aGEM", "Rww63pSEAkk", "548KRAe7_L0"],
       "id": 1
     },
     {
       "username": "usuario",
       "password": "noadmin",
       "id": 37,
-      "favs": [
-        "XS3q-m3aGEM",
-        "Rww63pSEAkk",
-        "548KRAe7_L0"
-      ]
+      "favs": ["XS3q-m3aGEM", "Rww63pSEAkk", "548KRAe7_L0"]
     },
     {
       "username": "alberto",
@@ -59,9 +51,7 @@
       "username": "juan manuel ",
       "password": "nuanma",
       "confirmPass": "juanma",
-      "favs": [
-        "teesteando integridad"
-      ],
+      "favs": ["teesteando integridad"],
       "id": 68
     },
     {

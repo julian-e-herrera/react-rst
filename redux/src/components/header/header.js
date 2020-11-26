@@ -44,7 +44,7 @@ const Header = () => {
   return (
     <Fragment>
       <HeaderStyled>
-        <h1>
+        <h1 data-testid="title">
           <Link to={'/'}>Real Estate Test</Link>
         </h1>
         {auth ? (

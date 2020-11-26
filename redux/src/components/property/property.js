@@ -40,7 +40,7 @@ export const Property = (props) => {
         </Modal>
       )}
 
-      <Container>
+      <Container data-testid="property">
         {/* <div className="img" style={sti} alt={item.alt_description}></div> */}
         <Card image={image}></Card>
         <Text>
