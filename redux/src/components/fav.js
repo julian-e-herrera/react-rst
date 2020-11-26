@@ -24,7 +24,7 @@ export default function Fav({ id }) {
   const handleClose = () => {
     setLoginModal(false)
   }
-  console.log(isFavorite)
+  //console.log(isFavorite)
   ////////
   const estate = useSelector((state) => state.estate.favs)
   const [userCopy, setCopy] = useState({

@@ -8,15 +8,15 @@ export const searchUser = (user) => {
     dispatch(loginUser())
     try {
       const users = await clientAxios.get(`/users`)
-      console.log(users.data)
-      //me fijo si existe el usuario
+      //console.log(users.data)
+      //if user exist
       const validUser = users.data.filter((person) => person.username.toLowerCase().includes(username))
-      const encontrado = validUser[0]
-      if (!encontrado) {
+      const find = validUser[0]
+      if (!find) {
         failLog()
-      } else if (encontrado.password === password) {
+      } else if (find.password === password) {
         //  console.log(encontrado)
-        dispatch(loginUserSuccess(encontrado))
+        dispatch(loginUserSuccess(find))
         Swal.fire('Success', 'User loging was succesfully', 'success')
       }
     } catch (error) {

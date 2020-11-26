@@ -14,21 +14,20 @@ const Login = () => {
   const handleInputChange = (event) => {
     setUser({ ...userI, [event.target.name]: event.target.value })
   }
-
-  ///crea una funcion al utilizar use dispatch
+  console.log(userI)
+  ///build function to use dispatch
   const dispatch = useDispatch()
 
+  const loaduser = () => dispatch(searchUser(userI))
   useEffect(() => {
-    const loaduser = () => dispatch(searchUser(userI))
     loaduser()
   }, [])
 
-  ////acceder store del state
+  ////access store  state
   const loading = useSelector((state) => state.login.loading)
-  console.log(loading)
+  // console.log(loading)
   const addUser = (user) => dispatch(searchUser(user))
-  //FALTA MARCAR ERROR CUANDO EL LOGUEO ES ERRONEO,RECORDAR AGREGAR BOTON PARA
-  //VER FAVS PENSAR SI CREAR UN CARRUSEL BUEVO O UNA ESTRUCTURA NUEVA
+  //make error was incomplete
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -47,6 +46,7 @@ const Login = () => {
           value={userI.username}
           placeholder=" name"
           onChange={handleInputChange}
+          data-testid="username"
           required
         />
         <label htmlFor="password">Password</label>
@@ -57,10 +57,11 @@ const Login = () => {
           value={userI.password}
           placeholder="passsword"
           onChange={handleInputChange}
+          data-testid="password"
           required
         />
 
-        <ButtonStyled>Sign-in</ButtonStyled>
+        <ButtonStyled data-testid="btn-sing-in">Sign-in</ButtonStyled>
       </form>
       {/* {loading ? <p>Loading...</p> : null} */}
       {/* {error ? <p>Hubo un console.error();</p> : null} */}
