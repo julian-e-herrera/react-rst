@@ -106,13 +106,19 @@ export const Card_styled = styled.div`
     text-decoration-thickness: initial;
   }
 `
-export const Card_street = styled.div`{
+export const Card_street = styled.div`
+   {
     color: rgb(0, 0, 0);
-    font-family: "Chronicle Display";
+    font-family: 'Chronicle Display';
     font-size: 21px;
     letter-spacing: 0.3px;
     line-height: 1.4;
-    margin-bottom: 15px;`
+    margin-bottom: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 60px;
+  }
+`
 
 export const Card_location = styled.div`
    {
@@ -136,6 +142,7 @@ export const Card_propertyDetail = styled.ul`
     line-height: 1.3;
     text-transform: uppercase;
     list-style: none;
+    margin-left: -11%;
   }
   li {
     padding: 16px 0px 12px;
@@ -195,7 +202,7 @@ export const Card_bottom = styled.div`
     justify-content: space-between;
     padding: 16px 24px;
     position: absolute;
-    width: 100%;
+    width: 99%;
     text-align: left;
   }
 `
