@@ -27,7 +27,7 @@ export const Card_container = styled.div`
     position: relative;
     padding-bottom: 0px;
     z-index: 0;
-    max-width: 334px;
+    max-width: 360px;
     min-width: 334px;
   }
   a,
@@ -174,7 +174,7 @@ export const Title = styled.div`
     position: absolute;
     text-transform: uppercase;
     z-index: 1;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0, 0.4);
     -webkit-box-pack: center;
     justify-content: center;
     width: 125px;
