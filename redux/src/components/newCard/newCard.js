@@ -2,7 +2,6 @@ import * as cardStyled from './card-styled'
 import React, { useState } from 'react'
 import Modal from '../modal'
 import Fav from '../fav'
-//	#FF0000 red
 
 const Card = (props) => {
   const item = props

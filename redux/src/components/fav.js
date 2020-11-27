@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { selectFav, addFav, getFavAction, deleteFav } from '../actions/estateActions'
-import { setUpdateFav } from '../actions/loginAction'
+import { activeFavs } from '../reducers/estateReducer'
+//import { UpdatedFav } from '../actions/loginAction'
 import Modal from '../components/modal'
 import Login from '../components/login/login'
+
+// const mapStateProps = (state) => {
+//   return {
+//     favs: activeFavs(state),
+//   }
+// }
 
 export default function Fav({ id }) {
   const auth = useSelector((state) => state.login.auth)
@@ -42,6 +49,7 @@ export default function Fav({ id }) {
   }
   const updateFavs = () => {
     //dispatch(setUpdateFav(authUser.id, userCopy))
+
     console.log(estate)
   }
 
@@ -63,9 +71,9 @@ export default function Fav({ id }) {
   const handleClick = (e) => {
     e.preventDefault()
     cambiarfav(id)
-    //si no esta logeado q vaya al login
+    //
     !auth ? setLoginModal(true) : changefav()
-    //deberia enviar el update luego de la modificacion
+    //
     auth && updateFavs()
   }
   const addingFav = (id) => {
@@ -106,3 +114,5 @@ export default function Fav({ id }) {
     </>
   )
 }
+
+//export default connect(mapStateProps, { UpdatedFav })(Fav)

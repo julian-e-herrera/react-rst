@@ -73,3 +73,6 @@ export default function (state = initialState, action) {
       return state
   }
 }
+
+export const activeFavs = (state) => state.estate.favs
+export const activeEstate = (state) => state.estate.estate

@@ -69,7 +69,7 @@ const failLog = () => {
 export function setUpdateFav(id, user) {
   //update el usuario
   return async (dispatch) => {
-    dispatch(updatedFav(user))
+    dispatch(UpdatedFav(user))
     try {
       const resultado = await clientAxios.put(`/users/${id}`, user)
       console.log(resultado)
@@ -81,7 +81,7 @@ export function setUpdateFav(id, user) {
   }
 }
 
-const updatedFav = (user) => ({
+export const UpdatedFav = (user) => ({
   type: UPDATE_FAV,
   payload: user,
 })
