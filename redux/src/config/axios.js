@@ -15,3 +15,5 @@ export const clientAxios = axios.create({
 })
 
 export default (estateAxios, clientAxios)
+module.export = clientAxios
+module.export = estateAxios
