@@ -17,7 +17,7 @@ export const Property = (props) => {
   }
 
   return (
-    <div>
+    <div data-testid="property">
       {showModalCard && (
         <Modal onClose={handleClose}>
           <Container>

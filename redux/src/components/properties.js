@@ -1,18 +1,25 @@
 import React, { Fragment, useEffect } from 'react'
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getEstateAction } from '../actions/estateActions'
+import { activeEstate } from '../reducers/estateReducer'
 import Carousel from 'react-elastic-carousel'
-import Property from './property/property'
-
+// import Property from './property/property'
+import Card from '../components/newCard/newCard'
+import { connect } from 'react-redux'
 const breakpoint = [
   { width: 500, itemsToShow: 1 },
   { width: 720, itemsToShow: 2 },
   { width: 1200, itemsToShow: 3 },
   { width: 1500, itemsToShow: 4 },
 ]
+const mapStateProps = (state) => {
+  return {
+    estate: activeEstate(state),
+  }
+}
 
-const Properties = () => {
+const Properties = ({ estate }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,7 +27,7 @@ const Properties = () => {
     loadEstate()
   }, [])
 
-  const estate = useSelector((state) => state.estate.estate)
+  //const estate = useSelector((state) => state.estate.estate)
   return (
     <Fragment>
       {estate.lenght === 0 ? (
@@ -28,13 +35,13 @@ const Properties = () => {
       ) : (
         <Carousel breakPoints={breakpoint}>
           {estate.map((ite) => (
-            <Property key={ite.id} {...ite} />
+            <Card key={ite.id} {...ite} />
           ))}
         </Carousel>
       )}
-      {/* <h1>propertye</h1>deberia agragar aqui  el carusel con los favs */}
+      {/* here must be carousel with favs */}
     </Fragment>
   )
 }
 
-export default Properties
+export default connect(mapStateProps)(Properties)

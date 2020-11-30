@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
       "username": "julian",
       "password": "admin",
       "favs": [
         "XS3q-m3aGEM",
         "Rww63pSEAkk",
         "548KRAe7_L0"
-      ]
+      ],
+      "id": 1
     },
     {
       "username": "usuario",
@@ -56,10 +56,12 @@
       "id": 67
     },
     {
-      "username": "jjuan manuel ",
+      "username": "juan manuel ",
       "password": "nuanma",
       "confirmPass": "juanma",
-      "favs": [],
+      "favs": [
+        "teesteando integridad"
+      ],
       "id": 68
     },
     {
