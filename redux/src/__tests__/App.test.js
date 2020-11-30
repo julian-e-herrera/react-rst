@@ -15,7 +15,7 @@ jest.mock('../__mocks__/estate')
 test('main app<App/>', () => {})
 
 const axios = estateAxios
-const Properties = require('../__mocks__/estate')
+const Properties = require('../config/axios')
 
 ///console.log(axios)//?
 test('should fetch properties', async () => {

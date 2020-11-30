@@ -14,7 +14,7 @@ const Login = () => {
   const handleInputChange = (event) => {
     setUser({ ...userI, [event.target.name]: event.target.value })
   }
-  console.log(userI)
+  // console.log(userI)
   ///build function to use dispatch
   const dispatch = useDispatch()
 
