@@ -18,8 +18,6 @@ test('should fetch users', async () => {
   const users = await Users.users
   const resp = { data: users }
   await axios.get.mockResolvedValue(resp)
-  //console.log(resp.data)
-  // or you could use the following depending on your use case:
   axios.get.mockImplementation(() => Promise.resolve(resp))
 
   expect(resp.data).toEqual(users)
@@ -51,8 +49,6 @@ test('main call search user<login/>', async () => {
       <Login onClick={handleSubmit} />
     </Provider>
   )
-  //   const list = screen.findAllByTestId('property')
-  //   expect(await list).toHaveLength(10)
 
   expect(await mockAxios.get).toHaveBeenCalled()
   expect(mockAxios.get).toHaveBeenCalledTimes(1)
